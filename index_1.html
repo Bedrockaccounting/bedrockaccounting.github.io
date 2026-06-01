@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedrock Accounting Services Ltd | CIC & Charity Specialists | Windsor</title>
+<meta name="description" content="Expert bookkeeping and accounting for CICs, charities and small businesses. Based in Windsor, Berkshire. MTD-ready. AATQB qualified.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0D1B2A;--slate:#1C3045;--gold:#C8973A;--gold-light:#E8B85A;--cream:#FAF7F2;--text:#2C2C2A;--muted:#6B6B68;--border:#E8E4DC;--white:#FFFFFF;--teal:#0F6E56}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,0.97);backdrop-filter:blur(8px);padding:0 5%;height:70px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-icon{width:36px;height:36px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:16px}
+.nav-logo-text{font-family:'Playfair Display',serif;color:var(--white);font-size:17px;font-weight:600}
+.nav-logo-text span{color:var(--gold)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:9px 22px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--gold-light)}
+.hero{background:var(--navy);min-height:100vh;display:flex;align-items:center;padding:0 5%;position:relative;overflow:hidden}
+.hero-content{max-width:640px;position:relative;z-index:2;padding-top:70px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,151,58,0.12);border:1px solid rgba(200,151,58,0.3);color:var(--gold);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:28px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,62px);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:20px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:36px;font-weight:300;max-width:520px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:13px 28px;border-radius:7px;font-size:14px;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-ghost{background:transparent;color:var(--white);padding:13px 28px;border-radius:7px;font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,0.25);display:inline-block;transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5)}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--white);display:block}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.05em;text-transform:uppercase;margin-top:3px}
+.trust-bar{background:var(--cream);padding:22px 5%;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;font-weight:500}
+.trust-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
+section{padding:90px 5%}
+.section-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:16px}
+.section-sub{font-size:16px;color:var(--muted);line-height:1.65;max-width:520px}
+.section-header{margin-bottom:56px}
+.accordion{display:flex;flex-direction:column;gap:2px;max-width:800px;margin:0 auto}
+.acc-item{background:var(--cream);border-radius:10px;overflow:hidden;border:1px solid var(--border);transition:border-color 0.2s}
+.acc-item.open{border-color:rgba(200,151,58,0.4)}
+.acc-trigger{width:100%;background:none;border:none;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:12px;font-family:'DM Sans',sans-serif}
+.acc-trigger:hover{background:rgba(200,151,58,0.04)}
+.acc-left{display:flex;align-items:center;gap:14px}
+.acc-icon{width:38px;height:38px;background:rgba(200,151,58,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.acc-title{font-size:15px;font-weight:500;color:var(--navy);text-align:left}
+.acc-arrow{width:20px;height:20px;color:var(--muted);flex-shrink:0;transition:transform 0.25s}
+.acc-item.open .acc-arrow{transform:rotate(180deg);color:var(--gold)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+.acc-item.open .acc-body{max-height:1200px}
+.acc-inner{padding:0 24px 24px}
+.acc-inner p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.svc{background:var(--white);border-radius:7px;padding:14px 16px;border:1px solid var(--border)}
+.svc-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.svc-desc{font-size:12px;color:var(--muted);line-height:1.4}
+.offer-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,151,58,0.1);border:1px solid rgba(200,151,58,0.25);color:#7a5a1a;padding:8px 14px;border-radius:6px;font-size:12px;font-weight:600;margin-top:12px}
+.spec-list{display:flex;flex-direction:column;gap:14px}
+.spec-row{display:flex;gap:14px;align-items:flex-start}
+.spec-num{font-family:'Playfair Display',serif;font-size:22px;color:rgba(200,151,58,0.4);font-weight:700;flex-shrink:0;width:28px;line-height:1.2}
+.spec-row h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.spec-row p{font-size:12px;color:var(--muted);line-height:1.4}
+.pill-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pill{background:var(--white);border:1px solid var(--border);color:var(--muted);padding:4px 12px;border-radius:100px;font-size:11px;font-weight:500}
+.mtd-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.mtd-row{display:flex;gap:14px;align-items:flex-start}
+.mtd-num{width:28px;height:28px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px}
+.mtd-row h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.mtd-row p{font-size:12px;color:var(--muted);line-height:1.4}
+.deadline-box{background:var(--navy);border-radius:8px;padding:14px 16px}
+.deadline-box h4{font-size:11px;color:var(--gold);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px}
+.deadline-box p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:0}
+.about-block{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+.about-avatar{width:48px;height:48px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);flex-shrink:0}
+.about-block h4{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.about-block .role{font-size:12px;color:var(--gold);font-weight:500}
+.cred-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;margin-bottom:14px}
+.cred{background:var(--white);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:4px;font-size:11px;font-weight:500}
+.value-list{display:flex;flex-direction:column;gap:10px}
+.val-row{display:flex;gap:10px;align-items:flex-start}
+.val-check{font-size:11px;color:var(--teal);background:rgba(15,110,86,0.1);border-radius:4px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.val-row p{font-size:13px;color:var(--muted);line-height:1.5}
+.val-row strong{color:var(--navy);font-weight:600}
+.contact-details{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.c-detail{display:flex;gap:10px;align-items:center}
+.c-icon{font-size:15px;opacity:0.6}
+.c-detail p{font-size:14px;color:var(--muted)}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-size:11px;font-weight:600;color:var(--navy);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 13px;background:var(--white);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--navy)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-btn{width:100%;background:var(--navy);color:var(--white);padding:13px;border-radius:7px;font-size:14px;font-weight:600;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:6px;transition:background 0.2s}
+.submit-btn:hover{background:var(--slate)}
+.cic-offer{background:rgba(200,151,58,0.08);border:1px solid rgba(200,151,58,0.2);border-radius:8px;padding:14px 16px;margin-top:14px}
+.cic-offer p{font-size:13px;color:var(--muted);margin-bottom:4px}
+.cic-offer strong{font-size:20px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:700}
+footer{background:var(--navy);padding:40px 5% 24px;text-align:center}
+.footer-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer p{font-size:12px;color:rgba(255,255,255,0.3);margin-top:8px}
+@media(max-width:768px){.nav-links{display:none}.hero-stats{gap:20px;flex-wrap:wrap}.service-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.trust-bar{gap:16px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">B</div>
+    <span class="nav-logo-text">Bedrock <span>Accounting</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#cic">CIC & Charities</a></li>
+    <li><a href="#mtd">MTD</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free consultation</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Windsor, Berkshire · Bedrock Accounting Services Ltd</div>
+    <h1>Financial clarity for <em>CICs, charities</em> & small businesses</h1>
+    <p class="hero-sub">Expert bookkeeping and accounts support from a team that understands the social enterprise sector. MTD-ready. AATQB qualified. Based in Windsor.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a free consultation</a>
+      <a href="#services" class="btn-ghost">See our services</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">CIC</span><span class="stat-label">Specialists</span></div>
+      <div><span class="stat-num">MTD</span><span class="stat-label">Ready</span></div>
+      <div><span class="stat-num">AATQB</span><span class="stat-label">Qualified</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-dot"></span>Bookkeeping & Year-End Accounts</div>
+  <div class="trust-item"><span class="trust-dot"></span>CIC34 Annual Report Filing</div>
+  <div class="trust-item"><span class="trust-dot"></span>Making Tax Digital (MTD)</div>
+  <div class="trust-item"><span class="trust-dot"></span>Payroll & VAT Returns</div>
+  <div class="trust-item"><span class="trust-dot"></span>Charity Finance</div>
+</div>
+
+<section id="services" style="background:var(--white)">
+  <div class="section-header" style="text-align:center;display:flex;flex-direction:column;align-items:center">
+    <div class="section-label">What we do</div>
+    <div class="section-title">Our services</div>
+    <p class="section-sub" style="text-align:center">Everything your organisation needs — under one roof, done right the first time.</p>
+  </div>
+  <div class="accordion">
+
+    <div class="acc-item" id="acc-services">
+      <button class="acc-trigger" onclick="toggle('services')">
+        <div class="acc-left"><div class="acc-icon">📋</div><span class="acc-title">Full list of services</span></div>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+      </button>
+      <div class="acc-body" id="body-services">
+        <div class="acc-inner">
+          <p>Everything your organisation needs — bookkeeping to year-end, done right the first time.</p>
+          <div class="service-grid">
+            <div class="svc"><div class="svc-name">Bookkeeping</div><div class="svc-desc">Monthly, accurate, FreeAgent-powered</div></div>
+            <div class="svc"><div class="svc-name">Year-end accounts</div><div class="svc-desc">Statutory accounts filed on time</div></div>
+            <div class="svc"><div class="svc-name">CIC34 filing</div><div class="svc-desc">Community interest statement & report</div></div>
+            <div class="svc"><div class="svc-name">MTD for ITSA</div><div class="svc-desc">Quarterly submissions, fully compliant</div></div>
+            <div class="svc"><div class="svc-name">Payroll</div><div class="svc-desc">RTI submissions, payslips, pensions</div></div>
+            <div class="svc"><div class="svc-name">VAT returns</div><div class="svc-desc">Quarterly, MTD-compatible</div></div>
+            <div class="svc"><div class="svc-name">Management accounts</div><div class="svc-desc">Monthly or quarterly insight</div></div>
+            <div class="svc"><div class="svc-name">Outsourced finance</div><div class="svc-desc">Your finance team without the overhead</div></div>
+          </div>
+          <div class="offer-badge">New CIC? 30% off your first confirmation statement</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item" id="acc-cic">
+      <button class="acc-trigger" onclick="toggle('cic')">
+        <div class="acc-left"><div class="acc-icon">🏛</div><span class="acc-title">CICs & charities</span></div>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+      </button>
+      <div class="acc-body" id="body-cic">
+        <div class="acc-inner">
+          <p>Most bookkeepers don't know what a CIC34 is. We do — and we've worked in the social enterprise sector, not just around it.</p>
+          <div class="spec-list">
+            <div class="spec-row"><span class="spec-num">01</span><div><h4>CIC regulatory compliance</h4><p>Annual report, community interest statement, asset lock — every filing requirement handled.</p></div></div>
+            <div class="spec-row"><span class="spec-num">02</span><div><h4>Charity finance (FRS 102 & SORP)</h4><p>Accounts prepared under the Charities SORP. Restricted vs unrestricted funds, trustee reporting.</p></div></div>
+            <div class="spec-row"><span class="spec-num">03</span><div><h4>Grant & contract reporting</h4><p>Management accounts that support funder reporting and financial accountability.</p></div></div>
+          </div>
+          <div class="pill-wrap">
+            <span class="pill">CICs</span><span class="pill">Charities</span><span class="pill">Social enterprises</span><span class="pill">Community groups</span><span class="pill">Limited companies</span><span class="pill">Sole traders</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item" id="acc-mtd">
+      <button class="acc-trigger" onclick="toggle('mtd')">
+        <div class="acc-left"><div class="acc-icon">📱</div><span class="acc-title">Making Tax Digital (MTD)</span></div>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+      </button>
+      <div class="acc-body" id="body-mtd">
+        <div class="acc-inner">
+          <p>MTD for Income Tax is coming. If you are a sole trader or landlord earning over £50,000, you need to act now.</p>
+          <div class="mtd-steps">
+            <div class="mtd-row"><div class="mtd-num">1</div><div><h4>Eligibility check</h4><p>We confirm if and when MTD for ITSA applies to you.</p></div></div>
+            <div class="mtd-row"><div class="mtd-num">2</div><div><h4>Software setup</h4><p>HMRC-compatible software configured and connected to your records.</p></div></div>
+            <div class="mtd-row"><div class="mtd-num">3</div><div><h4>Quarterly submissions</h4><p>All four quarterly updates to HMRC handled on your behalf.</p></div></div>
+            <div class="mtd-row"><div class="mtd-num">4</div><div><h4>Final declaration</h4><p>Year-end review and final tax declaration — clean and on time.</p></div></div>
+          </div>
+          <div class="deadline-box">
+            <h4>Upcoming deadlines</h4>
+            <p>April 2026 — income over £50,000<br>April 2027 — income over £30,000<br>April 2028 — income over £20,000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item" id="acc-about">
+      <button class="acc-trigger" onclick="toggle('about')">
+        <div class="acc-left"><div class="acc-icon">👤</div><span class="acc-title">About Bedrock</span></div>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+      </button>
+      <div class="acc-body" id="body-about">
+        <div class="acc-inner">
+          <div class="about-block">
+            <div class="about-avatar">F</div>
+            <div><h4>Francisca (Franky)</h4><p class="role">Founder, Bedrock Accounting Services Ltd</p></div>
+          </div>
+          <p>Bedrock was founded to give CICs, charities, and small businesses access to knowledgeable, hands-on financial support. With direct experience working inside the social enterprise sector, we understand your world — not just your numbers.</p>
+          <div class="cred-row">
+            <span class="cred">AATQB qualified</span>
+            <span class="cred">CIC specialist</span>
+            <span class="cred">Charity finance</span>
+            <span class="cred">Windsor based</span>
+          </div>
+          <div class="value-list">
+            <div class="val-row"><div class="val-check">✓</div><p><strong>Sector experience.</strong> We have worked inside CICs and charities — not just filed their accounts.</p></div>
+            <div class="val-row"><div class="val-check">✓</div><p><strong>Plain language.</strong> No jargon. You will always know what we are doing and why.</p></div>
+            <div class="val-row"><div class="val-check">✓</div><p><strong>Personal service.</strong> You deal with a named person who knows your organisation.</p></div>
+            <div class="val-row"><div class="val-check">✓</div><p><strong>Digital-first.</strong> FreeAgent, VT Software, and HMRC-compliant workflows as standard.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item" id="acc-contact">
+      <button class="acc-trigger" onclick="toggle('contact')">
+        <div class="acc-left"><div class="acc-icon">✉</div><span class="acc-title">Get in touch</span></div>
+        <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+      </button>
+      <div class="acc-body" id="body-contact">
+        <div class="acc-inner">
+          <p>Free initial consultation. No obligation. We will tell you exactly what you need — and what you don't.</p>
+          <div class="contact-details">
+            <div class="c-detail"><span class="c-icon">📧</span><p>francisca@bedrockaccountingservices.co.uk</p></div>
+            <div class="c-detail"><span class="c-icon">📍</span><p>Windsor, Berkshire, UK</p></div>
+            <div class="c-detail"><span class="c-icon">🕐</span><p>Response within one business day</p></div>
+          </div>
+          <form action="https://formspree.io/f/xykvrzab" method="POST">
+            <div class="form-row">
+              <div class="form-group"><label>First name</label><input type="text" name="first_name" placeholder="Jane" required></div>
+              <div class="form-group"><label>Last name</label><input type="text" name="last_name" placeholder="Smith" required></div>
+            </div>
+            <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="jane@yourorg.co.uk" required></div>
+            <div class="form-group"><label>Organisation type</label>
+              <select name="organisation_type" required>
+                <option value="">Select...</option>
+                <option>CIC (Community Interest Company)</option>
+                <option>Registered charity</option>
+                <option>Limited company</option>
+                <option>Sole trader / freelancer</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Service needed</label>
+              <select name="service" required>
+                <option value="">Select...</option>
+                <option>Bookkeeping</option>
+                <option>Year-end accounts</option>
+                <option>CIC34 filing</option>
+                <option>MTD for ITSA</option>
+                <option>Payroll</option>
+                <option>VAT returns</option>
+                <option>Management accounts</option>
+                <option>Confirmation statement</option>
+                <option>General enquiry</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us about your organisation..." required></textarea></div>
+            <button type="submit" class="submit-btn">Send message</button>
+          </form>
+          <div class="cic-offer">
+            <p>New CIC? First confirmation statement filing</p>
+            <strong>30% off</strong>
+            <p style="margin-top:4px;font-size:12px">Mention this when you get in touch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <div class="nav-logo-icon">B</div>
+    <span class="nav-logo-text">Bedrock <span>Accounting</span></span>
+  </div>
+  <p>© 2025 Bedrock Accounting Services Ltd · Windsor, Berkshire, UK</p>
+  <p style="margin-top:4px">francisca@bedrockaccountingservices.co.uk</p>
+</footer>
+
+<script>
+function toggle(id){
+  const item=document.getElementById('acc-'+id);
+  const body=document.getElementById('body-'+id);
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
+  document.querySelectorAll('.acc-body').forEach(b=>b.style.maxHeight='0');
+  if(!isOpen){item.classList.add('open');body.style.maxHeight=body.scrollHeight+'px'}
+}
+const hash=window.location.hash;
+if(hash){const id=hash.replace('#','');const el=document.getElementById('acc-'+id);if(el){toggle(id);setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),100)}}
+</script>
+</body>
+</html>
