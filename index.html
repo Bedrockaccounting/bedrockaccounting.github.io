@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bedrock Accounting Services</title>
+<meta name="description" content="Accounting for CICs, charities, social enterprises and small businesses. Based in Windsor, Berkshire.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bedrock Accounting Services">
+<meta property="og:title" content="Bedrock Accounting Services | Windsor, Berkshire">
+<meta property="og:description" content="Clear, reliable accounts for CICs, charities, social enterprises and small businesses. Bookkeeping, company accounts, CIC34, Corporation Tax and VAT.">
+<meta property="og:url" content="https://bedrockaccountingservices.co.uk/">
+<meta property="og:image" content="https://bedrockaccountingservices.co.uk/share-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bedrock Accounting Services: clear, reliable accounts for small organisations.">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-soft: #eef3fd;
+    --ink: #0e1d45;
+    --ink-soft: #4a5878;
+    --line: #d6def2;
+    --accent: #1f4fd1;
+    --accent-ink: #ffffff;
+    --accent-soft: #e3ebfd;
+    --navy: #0b2a7a;
+    --sky: #6f9bf2;
+    --ok: #1d6b3a;
+    --warn: #8a5a12;
+    --warn-bg: #fbf3e4;
+    --radius: 6px;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Public Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: #ffffff; color: var(--ink);
+    font-family: var(--sans); font-size: 17px; line-height: 1.6;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(2rem, 5vw, 2.9rem); }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2rem); }
+  h3 { font-size: 1.2rem; }
+  p { margin: 0; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  .eyebrow { font-size: .78rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+
+  /* Header + menu */
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .brand-mark { width: 34px; height: 34px; flex: none; }
+  .brand-name { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; line-height: 1.1; }
+  .brand-name small { display: block; font-family: var(--sans); font-weight: 500; font-size: .72rem; color: var(--ink-soft); letter-spacing: .04em; }
+
+  nav ul { list-style: none; margin: 0; padding: 0; }
+  .menu { display: flex; align-items: center; gap: 4px; }
+  .menu > li { position: relative; }
+  .menu a, .menu button.drop-btn {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 14px; border: 0; background: none; cursor: pointer;
+    font: 500 .95rem var(--sans); color: var(--ink); text-decoration: none; border-radius: var(--radius);
+  }
+  .menu a:hover, .menu button.drop-btn:hover, .menu button.drop-btn[aria-expanded="true"] { background: var(--bg-soft); }
+  .menu .cta { background: var(--accent); color: var(--accent-ink); margin-left: 6px; }
+  .menu .cta:hover { background: var(--accent); opacity: .9; }
+  .chev { width: 10px; height: 10px; transition: transform .2s; }
+  .drop-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
+  .dropdown {
+    position: absolute; top: calc(100% + 6px); left: 0; min-width: 250px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(14, 29, 69, .14); padding: 6px;
+  }
+  .dropdown a { padding: 9px 12px; font-weight: 400; }
+
+  .menu-toggle {
+    display: none; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--bg);
+    color: var(--ink); font: 500 .95rem var(--sans); padding: 8px 12px; border-radius: var(--radius); cursor: pointer;
+  }
+
+  @media (max-width: 760px) {
+    .menu-toggle { display: flex; }
+    nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .menu { flex-direction: column; align-items: stretch; padding: 8px 20px 16px; }
+    .menu a, .menu button.drop-btn { width: 100%; justify-content: space-between; }
+    .menu .cta { margin: 8px 0 0; justify-content: center; }
+    .dropdown { position: static; box-shadow: none; border: 0; border-left: 2px solid var(--line); border-radius: 0; margin: 2px 0 6px 14px; padding: 0; min-width: 0; }
+  }
+
+  /* Hero */
+  .hero { padding-block: 64px 56px; }
+  .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+  .hero-copy { display: grid; gap: 18px; }
+  .lead { font-size: 1.12rem; color: var(--ink-soft); max-width: 36em; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: var(--radius);
+    font: 600 1rem var(--sans); text-decoration: none; cursor: pointer; border: 1px solid var(--accent);
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-secondary { background: transparent; color: var(--accent); }
+  .facts { background: var(--bg-soft); border-radius: var(--radius); padding: 24px; display: grid; gap: 16px; }
+  .facts dt { font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  .facts dd { margin: 2px 0 0; font-weight: 500; }
+  .facts dl { margin: 0; display: grid; gap: 14px; }
+
+  section { padding-block: 56px; border-top: 1px solid var(--line); }
+  .section-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 40em; }
+  .section-head p { color: var(--ink-soft); }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+  .service { padding: 22px 22px 24px 0; border-bottom: 1px solid var(--line); display: grid; gap: 6px; align-content: start; scroll-margin-top: 90px; }
+  .service p { color: var(--ink-soft); font-size: .97rem; }
+  @media (max-width: 900px) { .services { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .services { grid-template-columns: 1fr; } .service { padding-right: 0; } }
+
+  /* Who we help */
+  .who { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
+  .who div { display: grid; gap: 8px; align-content: start; }
+  .who p { color: var(--ink-soft); font-size: .97rem; }
+  .tag { justify-self: start; font-size: .78rem; font-weight: 600; background: var(--accent-soft); color: var(--accent); padding: 3px 10px; border-radius: 99px; }
+  @media (max-width: 760px) { .who { grid-template-columns: 1fr; } }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .about-text { display: grid; gap: 14px; color: var(--ink-soft); }
+  .creds { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .creds li { display: flex; gap: 10px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .creds li::before { content: ""; width: 8px; height: 8px; flex: none; background: var(--accent); border-radius: 2px; transform: translateY(-2px); }
+  .software { grid-column: 1 / -1; display: grid; gap: 12px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 12px; }
+  .badge {
+    margin: 0; min-width: 150px; min-height: 72px; padding: 12px 18px;
+    display: flex; align-items: center; justify-content: center;
+    background: #ffffff; border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .badge img { height: 48px; width: auto; display: block; }
+  .badge-name { font-weight: 600; font-size: 1.05rem; color: var(--navy); }
+  @media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
+
+  /* Enquiry form */
+  .enquiry { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: start; }
+  .enquiry-side { display: grid; gap: 14px; color: var(--ink-soft); }
+  .enquiry-side strong { color: var(--ink); }
+  form { display: grid; gap: 16px; background: var(--bg-soft); padding: 24px; border-radius: var(--radius); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: grid; gap: 6px; }
+  label { font-weight: 600; font-size: .92rem; }
+  label .opt { font-weight: 400; color: var(--ink-soft); }
+  input, select, textarea {
+    width: 100%; font: 400 1rem var(--sans); color: var(--ink); background: var(--bg);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 11px 12px;
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+  textarea { min-height: 120px; resize: vertical; }
+  .field.error input, .field.error select, .field.error textarea { border-color: #b3261e; }
+  .err-msg { color: #b3261e; font-size: .85rem; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; color: var(--ink-soft); }
+  .consent input { width: auto; margin-top: 4px; }
+  .form-note { font-size: .85rem; color: var(--ink-soft); }
+  .status { padding: 14px 16px; border-radius: var(--radius); font-size: .95rem; }
+  .status.ok { background: var(--accent-soft); color: var(--ok); }
+  .status.warn { background: var(--warn-bg); color: var(--warn); }
+  @media (max-width: 760px) { .enquiry, .hero-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .row { grid-template-columns: 1fr; } }
+
+  footer { background: var(--navy); padding-block: 28px; font-size: .88rem; color: #dbe5ff; }
+  #who { background: var(--bg-soft); border-top: 0; }
+  #services + #who + #about { border-top: 0; }
+  h1 { color: var(--navy); }
+  h1 .hl { color: var(--accent); }
+  .facts { border-top: 4px solid var(--accent); }
+  .tag { background: var(--accent); color: var(--accent-ink); }
+  .who h3 { color: var(--navy); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Bedrock Accounting Services, home">
+      <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true">
+        <rect x="3" y="22" width="28" height="7" rx="1.5" fill="var(--navy)"></rect>
+        <rect x="7" y="14" width="20" height="6" rx="1.5" fill="var(--accent)"></rect>
+        <rect x="11" y="6" width="12" height="6" rx="1.5" fill="var(--sky)"></rect>
+      </svg>
+      <span class="brand-name">Bedrock<small>ACCOUNTING SERVICES</small></span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Menu
+    </button>
+    <nav id="site-nav" aria-label="Main">
+      <ul class="menu">
+        <li><a href="#top">Home</a></li>
+        <li>
+          <button class="drop-btn" id="services-btn" aria-expanded="false" aria-controls="services-menu">
+            Services
+            <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+          </button>
+          <ul class="dropdown" id="services-menu" hidden>
+            <li><a href="#bookkeeping">Bookkeeping</a></li>
+            <li><a href="#year-end">Company accounts &amp; CIC34</a></li>
+            <li><a href="#management">Management accounts</a></li>
+            <li><a href="#corporation-tax">Corporation Tax (CT600)</a></li>
+            <li><a href="#vat">VAT &amp; Making Tax Digital</a></li>
+            <li><a href="#independent-exam">Independent examination</a></li>
+            <li><a href="#formation">CIC &amp; company formation</a></li>
+            <li><a href="#outsourced">Outsourced finance</a></li>
+          </ul>
+        </li>
+        <li><a href="#who">Who we help</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="cta" href="#enquiry">Send an enquiry</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">CICs · Charities · Social enterprises · Small businesses</span>
+        <h1>Clear, reliable accounts for <span class="hl">small organisations.</span></h1>
+        <p class="lead">We keep your books in order, file on time and explain your numbers in plain English. So you can spend your time running your organisation, not doing paperwork.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#enquiry">Send an enquiry</a>
+          <a class="btn btn-secondary" href="#services">See our services</a>
+        </div>
+      </div>
+      <aside class="facts" aria-label="Key facts">
+        <dl>
+          <div><dt>Based in</dt><dd>Windsor, Berkshire. Working with clients across the UK.</dd></div>
+          <div><dt>Qualified</dt><dd>AATQB</dd></div>
+          <div><dt>Software</dt><dd>Xero · QuickBooks</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Services</span>
+        <h2>What we do</h2>
+        <p>Choose one service or all of them. Fixed price, agreed before we start.</p>
+      </div>
+      <div class="services">
+        <div class="service" id="bookkeeping"><h3>Bookkeeping</h3><p>Your books kept up to date in Xero or QuickBooks.</p></div>
+        <div class="service" id="year-end"><h3>Company accounts &amp; CIC34</h3><p>Year-end accounts filed at Companies House. CIC34 report for CICs.</p></div>
+        <div class="service" id="management"><h3>Management accounts</h3><p>Clear monthly or quarterly reports on how you are doing.</p></div>
+        <div class="service" id="corporation-tax"><h3>Corporation Tax (CT600)</h3><p>Your company tax return filed with HMRC on time.</p></div>
+        <div class="service" id="vat"><h3>VAT &amp; Making Tax Digital</h3><p>VAT returns and Making Tax Digital, done for you.</p></div>
+        <div class="service" id="independent-exam"><h3>Independent examination</h3><p>An independent check of your accounts when funders ask for one.</p></div>
+        <div class="service" id="formation"><h3>CIC &amp; company formation</h3><p>Help to set up your new CIC or company.</p></div>
+        <div class="service" id="outsourced"><h3>Outsourced finance</h3><p>We act as your finance team, so you don’t have to.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="who">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Who we help</span>
+        <h2>Social sector specialists, small business friendly</h2>
+      </div>
+      <div class="who">
+        <div><span class="tag">CICs</span><h3>Community interest companies</h3><p>We know the CIC rules. Asset locks, dividend caps and the CIC34 report are part of our everyday work.</p></div>
+        <div><span class="tag">Charities</span><h3>Small and growing charities</h3><p>Fund accounting, trustee reports and clear figures for funders and grant bodies.</p></div>
+        <div><span class="tag">Social enterprises</span><h3>Mission-led businesses</h3><p>Practical support to trade well, stay compliant and show the impact of every pound.</p></div>
+        <div><span class="tag">Small businesses</span><h3>Limited companies and sole traders</h3><p>Bookkeeping, VAT, year-end accounts and Making Tax Digital for Income Tax, so you stay on the right side of HMRC.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-text">
+        <span class="eyebrow">About</span>
+        <h2 style="color: var(--ink)">Small enough to know you by name</h2>
+        <p>Bedrock Accounting Services was founded by Francisca Abagi to give CICs, charities and small businesses the kind of accountant they rarely get: one who understands how they are funded and what they are trying to achieve.</p>
+        <p>Francisca has over a decade of experience working with charities and CICs. She knows the pressure directors and trustees are under, and keeps things simple.</p>
+      </div>
+      <ul class="creds" aria-label="Qualifications and tools">
+        <li>AATQB qualified accountant</li>
+        <li>Works in Xero and QuickBooks</li>
+        <li>Specialist in CIC and charity accounting</li>
+        <li>Support for small businesses and sole traders</li>
+        <li>Fixed fees agreed up front</li>
+      </ul>
+      <div class="software">
+        <span class="eyebrow">Software we work in</span>
+        <div class="badges">
+          <div class="badge"><span class="badge-name">Xero</span></div>
+          <div class="badge"><span class="badge-name">QuickBooks</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="enquiry">
+    <div class="wrap enquiry">
+      <div class="enquiry-side">
+        <span class="eyebrow">Get in touch</span>
+        <h2 style="color: var(--ink)">Send an enquiry</h2>
+        <p>Tell us a little about your organisation and what you need. We reply within two working days.</p>
+        <p><strong>Prefer to call or WhatsApp?</strong><br>07426 145239<br><a href="https://wa.me/447426145239" target="_blank" rel="noopener">Message us on WhatsApp</a></p>
+      </div>
+
+      <form id="enquiry-form" novalidate>
+        <div class="row">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="phone">Phone <span class="opt">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="organisation">Organisation name</label><input id="organisation" name="organisation" autocomplete="organization" required></div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="org-type">Type of organisation</label>
+            <select id="org-type" name="organisation_type" required>
+              <option value="">Please choose</option>
+              <option>Community interest company (CIC)</option>
+              <option>Charity</option>
+              <option>Social enterprise</option>
+              <option>Small business (limited company)</option>
+              <option>Sole trader</option>
+              <option>Not yet set up</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="service">What do you need help with?</label>
+            <select id="service" name="service" required>
+              <option value="">Please choose</option>
+              <option>Bookkeeping</option>
+              <option>Company accounts &amp; CIC34</option>
+              <option>Management accounts</option>
+              <option>Corporation Tax (CT600)</option>
+              <option>VAT &amp; Making Tax Digital</option>
+              <option>Independent examination</option>
+              <option>CIC formation</option>
+              <option>Company formation</option>
+              <option>Outsourced finance</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="message">Your message</label><textarea id="message" name="message" required placeholder="For example: we are a small CIC and our accounts are due in three months."></textarea></div>
+        <label class="consent" for="consent"><input id="consent" name="consent" type="checkbox" required> I agree that Bedrock Accounting Services can use these details to reply to my enquiry.</label>
+        <button class="btn btn-primary" type="submit" id="submit-btn">Send enquiry</button>
+        <div class="status" id="form-status" role="status" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year">2026</span> Bedrock Accounting Services Ltd. Registered in England and Wales, Company No. 15569708.</span>
+    <span>Windsor, Berkshire</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Mobile menu
+  var nav = document.getElementById('site-nav');
+  var toggle = document.getElementById('menu-toggle');
+  var mq = window.matchMedia('(max-width: 760px)');
+  function syncNav() { nav.hidden = mq.matches && toggle.getAttribute('aria-expanded') !== 'true'; }
+  toggle.addEventListener('click', function () {
+    toggle.setAttribute('aria-expanded', toggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    syncNav();
+  });
+  mq.addEventListener ? mq.addEventListener('change', syncNav) : mq.addListener(syncNav);
+  syncNav();
+
+  // Services drop-down
+  var btn = document.getElementById('services-btn');
+  var drop = document.getElementById('services-menu');
+  function setDrop(open) { btn.setAttribute('aria-expanded', open ? 'true' : 'false'); drop.hidden = !open; }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); setDrop(drop.hidden); });
+  document.addEventListener('click', function (e) { if (!drop.contains(e.target)) setDrop(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setDrop(false); btn.focus(); } });
+
+  // Close menus after choosing a link
+  nav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      setDrop(false);
+      if (mq.matches) { toggle.setAttribute('aria-expanded', 'false'); syncNav(); }
+    });
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Enquiry form
+  var FORM_ENDPOINT = 'https://formspree.io/f/xykvrzab';
+  var LIVE_HOSTS = ['bedrockaccountingservices.co.uk', 'www.bedrockaccountingservices.co.uk'];
+  var form = document.getElementById('enquiry-form');
+  var status = document.getElementById('form-status');
+  var submitBtn = document.getElementById('submit-btn');
+
+  function showStatus(type, text) { status.className = 'status ' + type; status.textContent = text; status.hidden = false; }
+  function clearErrors() {
+    form.querySelectorAll('.field.error').forEach(function (f) { f.classList.remove('error'); });
+    form.querySelectorAll('.err-msg').forEach(function (m) { m.remove(); });
+  }
+  function markError(el, text) {
+    var field = el.closest('.field');
+    if (!field) return;
+    field.classList.add('error');
+    var m = document.createElement('span'); m.className = 'err-msg'; m.textContent = text;
+    field.appendChild(m);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearErrors(); status.hidden = true;
+    var firstBad = null;
+    var checks = [
+      ['name', 'Please enter your name.'],
+      ['email', 'Please enter a valid email address, like name@example.org.'],
+      ['organisation', 'Please enter your organisation name.'],
+      ['org-type', 'Please choose your type of organisation.'],
+      ['service', 'Please choose what you need help with.'],
+      ['message', 'Please tell us a little about what you need.']
+    ];
+    checks.forEach(function (c) {
+      var el = document.getElementById(c[0]);
+      if (!el.value.trim() || !el.checkValidity()) { markError(el, c[1]); firstBad = firstBad || el; }
+    });
+    var consent = document.getElementById('consent');
+    if (!consent.checked) {
+      showStatus('warn', 'Please tick the box to agree that we can reply to you.');
+      firstBad = firstBad || consent;
+    }
+    if (firstBad) { firstBad.focus(); return; }
+
+    if (LIVE_HOSTS.indexOf(location.hostname) === -1) {
+      showStatus('warn', 'Preview only: this enquiry was not sent. The form sends for real once the page is live on bedrockaccountingservices.co.uk.');
+      return;
+    }
+
+    submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+    fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        form.reset();
+        showStatus('ok', 'Thank you. Your enquiry has been sent and we will reply within two working days.');
+      })
+      .catch(function () {
+        showStatus('warn', 'Your enquiry did not send. Please check your internet connection and try again, or call or WhatsApp 07426 145239.');
+      })
+      .finally(function () { submitBtn.disabled = false; submitBtn.textContent = 'Send enquiry'; });
+  });
+})();
+</script>
+</body>
+</html>
