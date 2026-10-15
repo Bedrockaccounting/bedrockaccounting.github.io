@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIC34 Questionnaire</title>
+<style>
+  :root{--bg:#fff;--ink:#1d2430;--muted:#5b6574;--line:#dfe3e8;--soft:#f6f7f9;--accent:#1f3a5f;--err:#b42318;--ok:#147a3d}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 16px 64px}
+  header{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:28px}
+  .brand{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  h1{font-size:26px;margin:0 0 8px;line-height:1.25}
+  header p{margin:0;color:var(--muted)}
+  h2{font-size:20px;margin:36px 0 4px;padding-top:20px;border-top:1px solid var(--line)}
+  .intro{color:var(--muted);margin:0 0 18px}
+  .q{margin:0 0 22px}
+  .ql{display:block;font-weight:600;margin-bottom:4px}
+  .req{color:var(--err)}
+  .hint{font-size:14px;color:var(--muted);margin:0 0 8px}
+  .eg{font-size:14px;background:var(--soft);border-left:3px solid var(--line);padding:8px 10px;margin:0 0 8px;color:var(--muted)}
+  input[type=text],input[type=date],textarea{width:100%;padding:10px 12px;border:1px solid #c9ced6;border-radius:6px;font:inherit;color:var(--ink);background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .radios{display:flex;flex-wrap:wrap;gap:8px 20px}
+  .radios label,.check label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+  .check{margin:0 0 12px}
+  .follow{display:none;border-left:3px solid var(--accent);padding-left:14px;margin:0 0 22px}
+  .btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:13px 24px;font:inherit;font-weight:600;cursor:pointer;width:100%;margin-top:12px}
+  .btn[disabled]{opacity:.6}
+  .done{display:none;text-align:center;padding:40px 16px}
+  .done h2{color:var(--ok);border:none}
+  footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="brand">Bedrock Accounting Services Ltd</p>
+    <h1>CIC34 director questionnaire</h1>
+    <p>Your answers help us write your CIC Report (CIC34), which is filed with your accounts. Use your own words. We will turn them into the formal wording. Questions marked <span class="req">*</span> must be answered.</p>
+  </header>
+
+  <form id="f" action="https://formspree.io/f/xykvrzab" method="POST">
+    <input type="hidden" name="_subject" value="CIC34 questionnaire">
+
+    <div class="q">
+      <label class="ql" for="cname">Company name <span class="req">*</span></label>
+      <input type="text" id="cname" name="Company name" required>
+    </div>
+    <div class="q">
+      <label class="ql" for="ye">Year end this report covers <span class="req">*</span></label>
+      <input type="date" id="ye" name="Financial year end" required>
+    </div>
+    <div class="q">
+      <label class="ql" for="pname">Your name <span class="req">*</span></label>
+      <input type="text" id="pname" name="Completed by" required>
+    </div>
+
+    <!-- PART 1 -->
+    <h2>Part 1: What you did this year and who it helped</h2>
+    <p class="intro">Tell us what the company actually did during the year and how it helped your community. Real numbers and examples make the report stronger.</p>
+
+    <div class="q">
+      <label class="ql" for="p1a">1. What were your main activities this year? <span class="req">*</span></label>
+      <p class="eg">Example: "Ran 48 weekly lunch clubs in two halls, and 6 summer day trips."</p>
+      <textarea id="p1a" name="P1 Main activities" required></textarea>
+    </div>
+    <div class="q">
+      <label class="ql" for="p1b">2. Who benefited? <span class="req">*</span></label>
+      <p class="eg">Example: "Older people living alone in Slough, and their carers."</p>
+      <textarea id="p1b" name="P1 Who benefited" required></textarea>
+    </div>
+    <div class="q">
+      <label class="ql" for="p1c">3. How many people did you help or reach? <span class="req">*</span></label>
+      <p class="hint">A rough figure is fine. Include volunteers if relevant.</p>
+      <input type="text" id="p1c" name="P1 Numbers reached" required placeholder="e.g. 120 people, 15 volunteers">
+    </div>
+    <div class="q">
+      <label class="ql" for="p1d">4. What difference did it make to them? <span class="req">*</span></label>
+      <p class="eg">Example: "Members say they feel less lonely. 20 people were linked to local health services."</p>
+      <textarea id="p1d" name="P1 Difference made" required></textarea>
+    </div>
+    <div class="q">
+      <label class="ql" for="p1e">5. Any highlights, awards, new partners or a short story from someone you helped?</label>
+      <textarea id="p1e" name="P1 Highlights"></textarea>
+    </div>
+    <div class="q">
+      <label class="ql" for="p1f">6. Did anything not go to plan, or change during the year?</label>
+      <textarea id="p1f" name="P1 Challenges or changes"></textarea>
+    </div>
+
+    <!-- PART 2 -->
+    <h2>Part 2: Listening to the people you serve</h2>
+    <p class="intro">A "stakeholder" is anyone affected by your work: the people you help, volunteers, funders, partners or the local council.</p>
+
+    <div class="q">
+      <span class="ql">1. Did you ask your stakeholders for feedback or ideas this year? <span class="req">*</span></span>
+      <div class="radios">
+        <label><input type="radio" name="P2 Consulted" value="Yes" required> Yes</label>
+        <label><input type="radio" name="P2 Consulted" value="No"> No</label>
+      </div>
+    </div>
+    <div class="follow" id="consultYes">
+      <div class="q">
+        <span class="ql">Who did you ask? (tick all that apply)</span>
+        <div class="radios">
+          <label><input type="checkbox" name="P2 Who" value="People we help"> People we help</label>
+          <label><input type="checkbox" name="P2 Who" value="Volunteers"> Volunteers</label>
+          <label><input type="checkbox" name="P2 Who" value="Staff"> Staff</label>
+          <label><input type="checkbox" name="P2 Who" value="Funders"> Funders</label>
+          <label><input type="checkbox" name="P2 Who" value="Partners"> Partner organisations</label>
+          <label><input type="checkbox" name="P2 Who" value="Local council"> Local council</label>
+        </div>
+      </div>
+      <div class="q">
+        <span class="ql">How did you ask them? (tick all that apply)</span>
+        <div class="radios">
+          <label><input type="checkbox" name="P2 How" value="Surveys"> Surveys</label>
+          <label><input type="checkbox" name="P2 How" value="Meetings"> Meetings</label>
+          <label><input type="checkbox" name="P2 How" value="Feedback forms"> Feedback forms</label>
+          <label><input type="checkbox" name="P2 How" value="Informal chats"> Informal chats</label>
+          <label><input type="checkbox" name="P2 How" value="Social media"> Social media</label>
+          <label><input type="checkbox" name="P2 How" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="q">
+        <label class="ql" for="p2c">What did they tell you?</label>
+        <textarea id="p2c" name="P2 Feedback received"></textarea>
+      </div>
+      <div class="q">
+        <label class="ql" for="p2d">What did you change because of their feedback?</label>
+        <p class="eg">Example: "Moved sessions to mornings because members said afternoons were hard."</p>
+        <textarea id="p2d" name="P2 Changes made"></textarea>
+      </div>
+    </div>
+
+    <!-- PART 3 -->
+    <h2>Part 3: Directors' pay</h2>
+    <p class="intro">Paying back genuine out-of-pocket expenses (with receipts) is <strong>not</strong> pay. Anything else is: salary, fees, consultancy, benefits.</p>
+
+    <div class="q">
+      <span class="ql">1. Did any director receive pay, fees or benefits from the company this year? <span class="req">*</span></span>
+      <div class="radios">
+        <label><input type="radio" name="P3 Directors paid" value="No" required> No</label>
+        <label><input type="radio" name="P3 Directors paid" value="Yes"> Yes</label>
+        <label><input type="radio" name="P3 Directors paid" value="Not sure"> Not sure</label>
+      </div>
+    </div>
+    <div class="follow" id="payYes">
+      <div class="q">
+        <label class="ql" for="p3b">Please give details for each director</label>
+        <p class="hint">Name, what it was for, and the amount for the year.</p>
+        <p class="eg">Example: "Jane Smith, project manager salary, £12,000."</p>
+        <textarea id="p3b" name="P3 Pay details"></textarea>
+      </div>
+    </div>
+    <div class="q">
+      <span class="ql">2. Did any director get a payment for leaving the board? <span class="req">*</span></span>
+      <div class="radios">
+        <label><input type="radio" name="P3 Loss of office payment" value="No" required> No</label>
+        <label><input type="radio" name="P3 Loss of office payment" value="Yes"> Yes</label>
+      </div>
+    </div>
+    <div class="q">
+      <span class="ql">3. Did the company pay any dividends to shareholders this year?</span>
+      <p class="hint">Only applies if your CIC has shares. Skip if limited by guarantee.</p>
+      <div class="radios">
+        <label><input type="radio" name="P3 Dividends paid" value="No"> No</label>
+        <label><input type="radio" name="P3 Dividends paid" value="Yes"> Yes</label>
+        <label><input type="radio" name="P3 Dividends paid" value="Not applicable"> Not applicable</label>
+      </div>
+    </div>
+
+    <!-- PART 4 -->
+    <h2>Part 4: Giving away money or assets</h2>
+    <p class="intro">This means giving money, equipment or property to another organisation free or below its value. For example, a grant to a charity, or donating your old minibus to another CIC.</p>
+
+    <div class="q">
+      <span class="ql">1. Did the company give away any money or assets for free or below their value this year? <span class="req">*</span></span>
+      <div class="radios">
+        <label><input type="radio" name="P4 Assets transferred" value="No" required> No</label>
+        <label><input type="radio" name="P4 Assets transferred" value="Yes"> Yes</label>
+        <label><input type="radio" name="P4 Assets transferred" value="Not sure"> Not sure</label>
+      </div>
+    </div>
+    <div class="follow" id="assetYes">
+      <div class="q">
+        <label class="ql" for="p4b">Please give details</label>
+        <p class="hint">What was given, who received it, and its value (an estimate is fine).</p>
+        <p class="eg">Example: "Donated 5 laptops worth about £1,000 to Riverside Youth CIC."</p>
+        <textarea id="p4b" name="P4 Transfer details"></textarea>
+      </div>
+    </div>
+
+    <!-- PART 5 -->
+    <h2>Part 5: Who will sign</h2>
+    <div class="q">
+      <label class="ql" for="p5a">Name of the director who will sign the CIC34 <span class="req">*</span></label>
+      <input type="text" id="p5a" name="P5 Signing director" required>
+    </div>
+
+    <!-- DECLARATION -->
+    <h2>Before you send</h2>
+    <div class="q">
+      <label class="ql" for="other">Anything else we should know?</label>
+      <textarea id="other" name="Other notes"></textarea>
+    </div>
+    <div class="check">
+      <label><input type="checkbox" name="Confirm accurate" value="Yes" required> The answers are true to the best of my knowledge. <span class="req">*</span></label>
+    </div>
+    <div class="check">
+      <label><input type="checkbox" name="Consent to use data" value="Yes" required> I agree Bedrock Accounting Services Ltd can use this information to prepare our CIC34. <span class="req">*</span></label>
+    </div>
+
+    <button type="submit" class="btn" id="send">Send my answers</button>
+  </form>
+
+  <div class="done" id="done">
+    <h2>Thank you, your answers have been sent</h2>
+    <p>We will draft your CIC34 and send it back to you to check before signing.</p>
+  </div>
+
+  <footer>Bedrock Accounting Services Ltd · Company No. 15569708 · Windsor, Berkshire. Your answers are only used to prepare your CIC Report.</footer>
+</div>
+
+<script>
+(function(){
+  var f = document.getElementById("f");
+  function checked(n){ var e=f.querySelector('input[name="'+n+'"]:checked'); return e?e.value:""; }
+  function toggle(){
+    document.getElementById("consultYes").style.display = checked("P2 Consulted")==="Yes" ? "block" : "none";
+    document.getElementById("payYes").style.display = /Yes|Not sure/.test(checked("P3 Directors paid")) ? "block" : "none";
+    document.getElementById("assetYes").style.display = /Yes|Not sure/.test(checked("P4 Assets transferred")) ? "block" : "none";
+  }
+  f.addEventListener("change", toggle);
+  // Optional: pre-fill company name from the link, e.g. cic34.html?company=Riverside%20CIC
+  try{
+    var c = new URLSearchParams(location.search).get("company");
+    if(c) document.getElementById("cname").value = c;
+  }catch(e){}
+  f.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){ f.reportValidity(); return; }
+    var btn = document.getElementById("send");
+    btn.disabled = true; btn.textContent = "Sending…";
+    var fd = new FormData(f);
+    fd.set("_subject", "CIC34 questionnaire: " + document.getElementById("cname").value);
+    fetch(f.action, {method:"POST", body:fd, headers:{"Accept":"application/json"}})
+      .then(function(r){
+        if(!r.ok) throw 0;
+        f.style.display = "none";
+        document.getElementById("done").style.display = "block";
+        window.scrollTo(0,0);
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = "Send my answers";
+        alert("Sorry, your answers did not send. Please check your internet and try again.");
+      });
+  });
+})();
+</script>
+</body>
+</html>
