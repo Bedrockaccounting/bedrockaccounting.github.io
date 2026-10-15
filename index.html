@@ -139,7 +139,8 @@
   @media (max-width: 760px) { .who { grid-template-columns: 1fr; } }
 
   /* About */
-  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .about { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  .about-text { max-width: 680px; }
   .about-text { display: grid; gap: 14px; color: var(--ink-soft); }
   .creds { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .creds li { display: flex; gap: 10px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
@@ -296,17 +297,11 @@
     <div class="wrap about">
       <div class="about-text">
         <span class="eyebrow">About</span>
-        <h2 style="color: var(--ink)">Small enough to know you by name</h2>
-        <p>Bedrock Accounting Services was founded by Francisca Abagi to give CICs, charities and small businesses the kind of accountant they rarely get: one who understands how they are funded and what they are trying to achieve.</p>
-        <p>Francisca has over a decade of experience working with charities and CICs. She knows the pressure directors and trustees are under, and keeps things simple.</p>
+        <h2 style="color: var(--ink)">Hello, I’m Francisca</h2>
+        <p>I founded Bedrock Accounting Services to give CICs, charities and small businesses an accountant who understands how they are funded and what they are trying to achieve.</p>
+        <p>I started out in small business funding at a credit union, and I have volunteered with several CICs. I know the pressure directors and trustees are under. My job is to keep your finances simple, accurate and on time.</p>
+        <p>I am based in Windsor and work with clients across the UK.</p>
       </div>
-      <ul class="creds" aria-label="Qualifications and tools">
-        <li>AATQB qualified accountant</li>
-        <li>Works in Xero and QuickBooks</li>
-        <li>Specialist in CIC and charity accounting</li>
-        <li>Support for small businesses and sole traders</li>
-        <li>Fixed fees agreed up front</li>
-      </ul>
       <div class="software">
         <span class="eyebrow">Software we work in</span>
         <div class="badges">
