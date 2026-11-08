@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIC Set-up Tracker | Bedrock Accounting Services</title>
+<meta name="description" content="A step-by-step guide to setting up and running a community interest company (CIC), based on CIC Regulator and Companies House rules. Track each stage and the documents you need.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-soft: #eef3fd;
+    --ink: #0e1d45;
+    --ink-soft: #4a5878;
+    --line: #d6def2;
+    --accent: #1f4fd1;
+    --accent-soft: #e3ebfd;
+    --navy: #0b2a7a;
+    --ok: #1d6b3a;
+    --ok-bg: #e5f4ea;
+    --warn: #8a5a12;
+    --warn-bg: #fbf3e4;
+    --bad: #a3261b;
+    --bad-bg: #fbe9e7;
+    --radius: 6px;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Public Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-inline: 16px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); }
+  h2 { font-size: 1.45rem; }
+  h3 { font-size: 1.1rem; }
+  p { margin: 0; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  .btn { border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: var(--radius); padding: 8px 14px; font-weight: 600; cursor: pointer; }
+  .btn.alt { background: #fff; color: var(--accent); }
+  .btn.small { padding: 4px 10px; font-size: .88rem; }
+  .btn:disabled { opacity: .5; cursor: default; }
+
+  header.top { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .brand { font-weight: 700; color: var(--navy); text-decoration: none; }
+  .intro { padding: 28px 0 18px; display: grid; gap: 10px; }
+  .intro p { color: var(--ink-soft); max-width: 70ch; }
+  .eyebrow { font-size: .76rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+
+  /* Client bar */
+  .clientbar { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; display: grid; gap: 12px; }
+  .clientbar .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+  .field { display: grid; gap: 3px; font-size: .88rem; font-weight: 600; }
+  .field input, .field select { font-weight: 400; border: 1px solid var(--line); border-radius: var(--radius); padding: 7px 9px; background: #fff; min-width: 0; }
+  .grow { flex: 1 1 200px; }
+  .health { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: .82rem; font-weight: 700; }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); }
+  .pill.warn { background: var(--warn-bg); color: var(--warn); }
+  .pill.bad { background: var(--bad-bg); color: var(--bad); }
+  .pill.none { background: #f0f2f7; color: var(--ink-soft); }
+  .pill.done { background: var(--navy); color: #fff; }
+  .bar { height: 10px; background: #fff; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex: 1 1 160px; max-width: 320px; }
+  .bar span { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+
+  /* Flowchart */
+  .flow-wrap { margin: 22px 0 6px; }
+  .flow { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px 30px; counter-reset: st; }
+  .flow li { position: relative; }
+  .flow li:not(:last-child)::after { content: "→"; position: absolute; right: -24px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); font-weight: 700; }
+  .flow li:nth-child(5)::after { content: "↓"; right: 50%; top: auto; bottom: -24px; transform: translateX(50%); }
+  .node { width: 100%; text-align: left; border: 2px solid var(--line); background: #fff; border-radius: 10px; padding: 10px 11px; cursor: pointer; display: grid; gap: 4px; min-height: 104px; }
+  .node .num { font-size: .74rem; font-weight: 700; color: var(--ink-soft); letter-spacing: .05em; }
+  .node .ttl { font-weight: 700; font-size: .95rem; line-height: 1.25; }
+  .node .st { font-size: .78rem; font-weight: 700; }
+  .node.s-done { border-color: var(--ok); background: var(--ok-bg); }
+  .node.s-done .st { color: var(--ok); }
+  .node.s-progress { border-color: #d9a13a; background: var(--warn-bg); }
+  .node.s-progress .st { color: var(--warn); }
+  .node.s-blocked { border-color: var(--bad); background: var(--bad-bg); }
+  .node.s-blocked .st { color: var(--bad); }
+  .node.s-none .st { color: var(--ink-soft); }
+  .node.active { box-shadow: 0 0 0 3px var(--accent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; font-size: .82rem; }
+
+  /* Stage panel */
+  .stage { margin: 26px 0 40px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; align-items: start; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 18px; background: #fff; display: grid; gap: 12px; }
+  .card.soft { background: var(--bg-soft); }
+  .tabs { display: flex; gap: 6px; }
+  .tab { border: 1px solid var(--line); background: #fff; border-radius: var(--radius); padding: 6px 12px; cursor: pointer; font-weight: 600; font-size: .9rem; }
+  .tab[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .warnbox { background: var(--warn-bg); color: var(--warn); border-radius: var(--radius); padding: 10px 12px; font-size: .9rem; }
+  .badbox { background: var(--bad-bg); color: var(--bad); border-radius: var(--radius); padding: 10px 12px; font-size: .9rem; }
+  .okbox { background: var(--ok-bg); color: var(--ok); border-radius: var(--radius); padding: 10px 12px; font-size: .9rem; }
+
+  /* Chat */
+  .chat { display: grid; gap: 10px; max-height: 560px; overflow-y: auto; padding: 4px; }
+  .msg { max-width: 88%; padding: 10px 13px; border-radius: 12px; font-size: .94rem; }
+  .msg.reg { background: var(--bg-soft); border: 1px solid var(--line); border-top-left-radius: 3px; }
+  .msg.me { background: var(--navy); color: #fff; justify-self: end; border-top-right-radius: 3px; }
+  .msg.fb-ok { background: var(--ok-bg); color: var(--ok); }
+  .msg.fb-bad { background: var(--bad-bg); color: var(--bad); }
+  .msg.fb-warn { background: var(--warn-bg); color: var(--warn); }
+  .msg .who { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; opacity: .75; margin-bottom: 2px; }
+  .answers { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag-doc { display: inline-block; font-size: .7rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); margin-right: 4px; vertical-align: 1px; }
+  .tag-stop { background: var(--bad-bg); color: var(--bad); }
+
+  /* Checklist */
+  .items { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .item { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: start; }
+  .item .q { font-weight: 600; font-size: .93rem; }
+  .item .h { grid-column: 1 / -1; font-size: .86rem; color: var(--ink-soft); }
+  .item select { border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 6px; background: #fff; font-size: .88rem; }
+  .item.i-ok { border-color: var(--ok); background: #f6fbf7; }
+  .item.i-bad { border-color: var(--bad); background: #fdf6f5; }
+  .item.i-unsure { border-color: #d9a13a; background: #fffaf1; }
+
+  .side h3 { margin-bottom: 4px; }
+  .side ul { margin: 0; padding-left: 18px; font-size: .92rem; display: grid; gap: 4px; }
+  .src { font-size: .84rem; color: var(--ink-soft); }
+  textarea { width: 100%; min-height: 90px; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; resize: vertical; }
+
+  /* Deadlines */
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+  .table-scroll { overflow-x: auto; }
+
+  .docs-all { margin: 0 0 40px; }
+  .docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 12px; }
+  .docs-grid .card { gap: 6px; padding: 14px; }
+  .docs-grid ul { margin: 0; padding-left: 18px; font-size: .88rem; }
+  .doc-ok { color: var(--ok); }
+
+  footer { border-top: 1px solid var(--line); padding: 18px 0 30px; font-size: .84rem; color: var(--ink-soft); }
+  footer .wrap { display: grid; gap: 6px; }
+
+  @media (max-width: 900px) {
+    .flow { grid-template-columns: repeat(2, 1fr); }
+    .flow li::after, .flow li:nth-child(5)::after { content: "" !important; }
+    .stage { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .flow { grid-template-columns: 1fr; gap: 22px; }
+    .flow li:not(:last-child)::after { content: "↓" !important; right: 50%; top: auto; bottom: -21px; transform: translateX(50%); }
+    .node { min-height: 0; }
+    .msg { max-width: 96%; }
+  }
+  @media print {
+    header.top, .clientbar .row, .tabs, .answers, .chat, footer .btn { display: none !important; }
+    .stage { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">Bedrock Accounting Services</a>
+    <a href="index.html#enquiry">Ask us for help</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="eyebrow">CIC set-up tracker</span>
+    <h1>From idea to a fully working CIC, one stage at a time</h1>
+    <p>Work through nine stages. Each stage asks you simple questions and lists the documents you need. A stage turns green when everything is in place. The steps follow the rules of the CIC Regulator and Companies House.</p>
+    <p><strong>Your answers stay on this device.</strong> Nothing is sent to us. Use “Save backup” to keep a copy.</p>
+  </section>
+
+  <!-- Client bar -->
+  <section class="clientbar" aria-label="Client">
+    <div class="row">
+      <label class="field grow">Client / CIC name
+        <select id="client-select"></select>
+      </label>
+      <button class="btn small" id="client-new">+ New client</button>
+      <button class="btn small alt" id="client-rename">Rename</button>
+      <button class="btn small alt" id="client-delete">Delete</button>
+    </div>
+    <div class="row">
+      <label class="field">Company type
+        <select id="f-type">
+          <option value="">Not chosen yet</option>
+          <option value="guarantee">Limited by guarantee</option>
+          <option value="shares">Limited by shares</option>
+        </select>
+      </label>
+      <label class="field">Date of incorporation
+        <input type="date" id="f-inc">
+      </label>
+      <label class="field">Financial year end (day &amp; month)
+        <input type="date" id="f-ye" title="Pick any year; only the day and month are used">
+      </label>
+      <label class="field">Started trading on
+        <input type="date" id="f-trade">
+      </label>
+    </div>
+    <div class="health">
+      <span id="health-pill" class="pill none">Not started</span>
+      <div class="bar" aria-hidden="true"><span id="progress-bar"></span></div>
+      <span id="progress-text" class="src"></span>
+    </div>
+    <div class="row">
+      <button class="btn small alt" id="export">Save backup</button>
+      <label class="btn small alt" style="display:inline-block">Load backup<input type="file" id="import" accept="application/json" hidden></label>
+      <button class="btn small alt" id="print">Print summary</button>
+    </div>
+  </section>
+
+  <!-- Flowchart -->
+  <section class="flow-wrap" aria-label="Stages">
+    <h2>Where the client is now</h2>
+    <ol class="flow" id="flow"></ol>
+    <div class="legend">
+      <span class="pill none">Not started</span>
+      <span class="pill warn">In progress</span>
+      <span class="pill bad">Blocked — fix before moving on</span>
+      <span class="pill ok">Complete</span>
+    </div>
+  </section>
+
+  <!-- Stage detail -->
+  <section class="stage" id="stage" aria-live="polite"></section>
+
+  <!-- Deadlines -->
+  <section class="card" id="deadlines-card" style="margin-bottom:28px">
+    <h2>Key deadlines</h2>
+    <p class="src">Tick each one when it has been filed or done. Worked out from the dates above. If the first accounts cover more than 12 months, HMRC splits them into two tax periods, so there will be two CT600s. Always check the dates shown on the Companies House service and HMRC letters. They win if they differ.</p>
+    <div class="table-scroll"><table id="deadlines"></table></div>
+  </section>
+
+  <!-- All documents -->
+  <section class="docs-all">
+    <h2>Every document, by stage</h2>
+    <div class="docs-grid" id="docs-grid"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>This tracker is a guide, not legal advice. Rules and fees change. Check GOV.UK before you file. Companies House fees went up on 1 February 2026, so older guides may show the wrong amounts.</p>
+    <p>© 2026 Bedrock Accounting Services Ltd · Company No. 15569708 · Windsor, Berkshire · <a href="privacy.html">Privacy notice</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ----------------------------------------------------------------------
+     STAGES
+     kind: "check" = must be true; "doc" = document must be in hand;
+           "stop"  = a wrong answer means the CIC cannot go ahead as planned.
+     good: the answer that passes ("yes" or "no").
+     only: show only for "shares" or "guarantee" companies.
+     ---------------------------------------------------------------------- */
+  var STAGES = [
+    {
+      id: "s1", title: "Is a CIC the right fit?",
+      goal: "Prove the idea is for the community, not for private gain, and that a CIC beats the other options.",
+      why: "The CIC Regulator only approves a CIC if a reasonable person would see its work as being for the benefit of the community. This is called the community interest test.",
+      items: [
+        { id: "s1a", kind: "check", good: "yes", q: "Can you say in one or two sentences who your work helps and how?", help: "Example: “We run free coding clubs for young people aged 11–16 in Slough.” Vague aims like “helping people” get rejected." },
+        { id: "s1b", kind: "stop", good: "no", q: "Is the group you help only your family, friends, members or the staff of one business?", help: "A group that narrow does not count as “the community”. Widen who can benefit." },
+        { id: "s1c", kind: "stop", good: "no", q: "Is the CIC a political party, a political campaigning group, or owned by one?", help: "These are “excluded companies” and cannot be CICs (CIC Regulations 2005, reg 6)." },
+        { id: "s1d", kind: "check", good: "yes", q: "Have you compared a CIC with a charity or CIO and know why a CIC suits you better?", help: "A CIC cannot get charity tax reliefs or Gift Aid. Some grant funders only give to charities. A CIC lets directors be paid more easily and can trade freely." },
+        { id: "s1e", kind: "check", good: "yes", q: "Do you understand the asset lock — that the CIC’s money and property must stay for community use, for ever?", help: "You cannot take assets out except at full market value, to another asset-locked body, or for the community. This cannot be undone later." },
+        { id: "s1f", kind: "doc", good: "yes", q: "Written: a one-page statement of community purpose, activities and who benefits", help: "This becomes the draft for the CIC36 form in Stage 4." }
+      ],
+      docs: ["Community purpose statement (1 page)", "Notes comparing CIC vs charity / CIO"],
+      sources: ["Companies (Audit, Investigations and Community Enterprise) Act 2004, Part 2 (s35 community interest test)", "Community Interest Company Regulations 2005, regs 3–6", "CIC Regulator guidance, Chapter 1–2"]
+    },
+    {
+      id: "s2", title: "Choose the structure and articles",
+      goal: "Pick the company type and the rules (articles of association) the CIC will run by.",
+      why: "Every CIC’s articles must include the CIC rules, including the asset lock. Using the Regulator’s model articles is the safest route.",
+      items: [
+        { id: "s2a", kind: "check", good: "yes", q: "Have you chosen: limited by guarantee or limited by shares?", help: "Guarantee: no shareholders, no dividends — most common for grant-funded CICs. Shares: can pay capped dividends to investors." },
+        { id: "s2b", kind: "check", good: "yes", q: "Are you using the CIC Regulator’s model articles (or articles a solicitor has checked for the CIC rules)?", help: "Articles must contain the asset lock and the CIC provisions in Schedules 1–3 of the 2005 Regulations." },
+        { id: "s2c", kind: "check", good: "yes", q: "Have you decided whether to name an asset-locked body (e.g. a charity) to get assets if the CIC closes?", help: "If you don’t name one, the Regulator can choose one for you." },
+        { id: "s2d", kind: "check", good: "yes", only: "shares", q: "Do the shareholders understand the dividend cap — no more than 35% of distributable profits in a year?", help: "The cap applies to dividends paid to anyone who is not an asset-locked body." },
+        { id: "s2e", kind: "check", good: "yes", q: "Does the name end with “Community Interest Company” or “CIC” (or the Welsh versions)?", help: "Also check the name is free on the Companies House name checker and is not “sensitive”." },
+        { id: "s2f", kind: "doc", good: "yes", q: "Final articles of association, with CIC provisions", help: "" },
+        { id: "s2g", kind: "doc", good: "yes", q: "Memorandum of association signed by each subscriber (founding member)", help: "" }
+      ],
+      docs: ["Articles of association (CIC model)", "Memorandum of association", "Name check result"],
+      sources: ["Community Interest Company Regulations 2005, Schedules 1–3 and Part 6 (asset lock)", "CIC (Amendment) Regulations 2014 (35% dividend cap)", "CIC Regulator guidance, Chapters 3, 6 and 7"]
+    },
+    {
+      id: "s3", title: "People: directors and members",
+      goal: "Have the right people in place, with their identity verified.",
+      why: "The law needs at least one director. Since 18 November 2025 every new director must verify their identity with Companies House before they can be appointed.",
+      items: [
+        { id: "s3a", kind: "check", good: "yes", q: "Do you have at least one director aged 16 or over?", help: "Our advice: aim for three directors who are not all from the same family. It gives better decisions and funders like it." },
+        { id: "s3b", kind: "stop", good: "no", q: "Is any proposed director disqualified or an undischarged bankrupt?", help: "They cannot act as a director. Check the disqualified directors register." },
+        { id: "s3c", kind: "check", good: "yes", q: "Has every director verified their identity with Companies House and got a personal code?", help: "Use GOV.UK One Login or an Authorised Corporate Service Provider. Without the code, the application will not go through." },
+        { id: "s3d", kind: "check", good: "yes", q: "Have you worked out who the people with significant control (PSCs) are?", help: "Usually anyone with over 25% of shares or votes, or who can appoint most directors. PSCs must verify identity too." },
+        { id: "s3e", kind: "check", good: "yes", q: "Do you have a registered office address in the UK (not a PO box) and a registered email address?", help: "Both are now required by law (Economic Crime and Corporate Transparency Act 2023)." },
+        { id: "s3f", kind: "doc", good: "yes", q: "Director and member details: full names, dates of birth, service addresses, ID personal codes", help: "" },
+        { id: "s3g", kind: "doc", good: "yes", q: "Signed conflict of interest declarations from each director", help: "Good practice. It protects the asset lock and shows the Regulator you are well run." }
+      ],
+      docs: ["Director ID verification personal codes", "Director & member details", "PSC details", "Conflict of interest declarations", "Registered office & email"],
+      sources: ["Companies Act 2006, s154 and s157", "Economic Crime and Corporate Transparency Act 2023 (identity verification, registered email, appropriate office)", "Company Directors Disqualification Act 1986"]
+    },
+    {
+      id: "s4", title: "Build the application pack",
+      goal: "Complete the forms the Regulator and Companies House need, with no gaps.",
+      why: "Most CIC applications that get sent back fail on the CIC36: vague activities, a community that is too narrow, or missing signatures.",
+      items: [
+        { id: "s4a", kind: "doc", good: "yes", q: "Form IN01 (application to register a company) completed", help: "" },
+        { id: "s4b", kind: "doc", good: "yes", q: "Form CIC36 (community interest statement) completed", help: "Part A: what the CIC will do. Part B: how it will benefit the community. Part C: how you will avoid benefiting only a small group." },
+        { id: "s4c", kind: "check", good: "yes", q: "Does the CIC36 describe real activities in plain detail (what, where, who for)?", help: "Bad: “support the community”. Good: “run weekly food bank sessions in Windsor for families on low incomes”." },
+        { id: "s4d", kind: "check", good: "yes", q: "Has every director signed the CIC36 declarations, including the excluded company declaration?", help: "A missing signature means the whole pack comes back." },
+        { id: "s4e", kind: "check", good: "yes", q: "Has every subscriber given a lawful purpose statement?", help: "Required on all new companies since 4 March 2024." },
+        { id: "s4f", kind: "check", good: "yes", q: "Have you checked the current fee on GOV.UK and arranged payment?", help: "Fees changed on 1 February 2026. Check the ‘Form a CIC’ and Companies House fees pages before paying." },
+        { id: "s4g", kind: "check", good: "yes", q: "Has someone other than the author checked the whole pack against the list?", help: "IN01 + CIC36 + memorandum + articles + fee, all consistent (same name, same directors)." }
+      ],
+      docs: ["IN01", "CIC36 signed by all directors", "Memorandum", "Articles with CIC provisions", "Fee payment", "Copy of the full pack for your records"],
+      sources: ["Form CIC36 (CIC Regulator, current version on GOV.UK)", "CIC Regulator: ‘Dos and don’ts of completing an application to incorporate a CIC’", "Companies Act 2006, s9"]
+    },
+    {
+      id: "s5", title: "Approval and registration",
+      goal: "Get the CIC approved and registered.",
+      why: "Companies House checks the company forms, then the Regulator decides if the community interest test is met. Only then is the CIC registered.",
+      items: [
+        { id: "s5a", kind: "check", good: "yes", q: "Has the application been submitted, and have you noted the date?", help: "Postal applications can take up to about 15 working days." },
+        { id: "s5b", kind: "stop", good: "no", q: "Has the application been rejected or sent back?", help: "If yes: read the reason, fix the CIC36 or articles, and resubmit. Mark this ‘No’ once a fixed pack is approved." },
+        { id: "s5c", kind: "doc", good: "yes", q: "Certificate of incorporation (showing CIC status) received", help: "Enter the incorporation date at the top of this page so deadlines are worked out." },
+        { id: "s5d", kind: "check", good: "yes", q: "Company number and authentication code stored safely?", help: "You need the code to file online. Keep it away from people who should not file for the company." },
+        { id: "s5e", kind: "doc", good: "yes", q: "Statutory registers set up (members, directors, PSCs)", help: "" },
+        { id: "s5f", kind: "doc", good: "yes", q: "First board meeting minutes (appoint chair, agree bank, year end, policies)", help: "" }
+      ],
+      docs: ["Certificate of incorporation", "Company number & authentication code", "Statutory registers", "First board minutes"],
+      sources: ["Companies (Audit, Investigations and Community Enterprise) Act 2004, s36", "Companies Act 2006, s15–16, s113, s162, s790M"]
+    },
+    {
+      id: "s6", title: "Get ready to operate",
+      goal: "Set up money, tax and legal basics before activity starts.",
+      why: "HMRC must be told within 3 months of starting any business activity. Funders and banks will ask for these items too.",
+      items: [
+        { id: "s6a", kind: "check", good: "yes", q: "Business bank account opened in the CIC’s name, with two signatories?", help: "Never run CIC money through a personal account. Two signatories protect the asset lock." },
+        { id: "s6b", kind: "check", good: "yes", q: "Registered for Corporation Tax within 3 months of starting activity?", help: "CICs pay Corporation Tax like other companies. You need the UTR HMRC posts after incorporation." },
+        { id: "s6c", kind: "check", good: "yes", q: "PAYE set up if anyone, including a director, will be paid?", help: "Register before the first payday." },
+        { id: "s6d", kind: "check", good: "yes", q: "VAT position checked? (must register if taxable turnover goes over £90,000 in 12 months)", help: "Check monthly. Grants are usually outside the scope of VAT; sales are not." },
+        { id: "s6e", kind: "check", good: "yes", q: "Bookkeeping system set up, with restricted grants tracked separately?", help: "Companies must keep adequate accounting records (Companies Act 2006, s386)." },
+        { id: "s6f", kind: "check", good: "yes", q: "Data protection: ICO fee paid (or exemption confirmed) and privacy notice written?", help: "" },
+        { id: "s6g", kind: "check", good: "yes", q: "Insurance in place (public liability, and employer’s liability if you have staff)?", help: "Employer’s liability insurance is a legal must once you employ anyone." },
+        { id: "s6h", kind: "doc", good: "yes", q: "Key policies: safeguarding (if working with children or adults at risk), conflicts of interest, finance controls", help: "Include DBS checks where the role needs them." }
+      ],
+      docs: ["Bank account details", "Corporation Tax UTR & registration", "PAYE reference (if paying staff)", "Insurance certificates", "ICO registration", "Policies pack"],
+      sources: ["Finance Act 2004 / HMRC CT41G guidance (3-month notice)", "Companies Act 2006, s386", "Employers’ Liability (Compulsory Insurance) Act 1969", "Data Protection (Charges and Information) Regulations 2018"]
+    },
+    {
+      id: "s7", title: "Run it well: first year",
+      goal: "Show the CIC is doing what it said, with proof.",
+      why: "The annual CIC34 report asks what you did for the community and how you involved people. Collect the evidence as you go, not at year end.",
+      items: [
+        { id: "s7a", kind: "check", good: "yes", q: "Are board meetings held at least quarterly, with minutes kept?", help: "" },
+        { id: "s7b", kind: "check", good: "yes", q: "Are you keeping an impact log (numbers helped, sessions run, photos, feedback)?", help: "This feeds Section A of the CIC34." },
+        { id: "s7c", kind: "check", good: "yes", q: "Are you consulting the people you serve (surveys, meetings, feedback forms)?", help: "This feeds Section B (stakeholder consultation) of the CIC34." },
+        { id: "s7d", kind: "check", good: "yes", q: "Is any pay to directors agreed by the board, minuted and at a fair rate?", help: "Directors’ pay must be shown in the CIC34." },
+        { id: "s7e", kind: "stop", good: "no", q: "Has any money or asset been given to a director, member or connected person below market value?", help: "This may breach the asset lock. Stop and get advice before anything else." },
+        { id: "s7f", kind: "check", good: "yes", q: "Are grant conditions tracked and reported to funders on time?", help: "" },
+        { id: "s7g", kind: "check", good: "yes", q: "Are books reconciled to the bank every month?", help: "" }
+      ],
+      docs: ["Board minutes", "Impact log & evidence", "Stakeholder consultation records", "Director pay decisions", "Monthly bank reconciliations", "Grant reports"],
+      sources: ["CIC Regulator guidance, Chapter 8 (annual report) and Chapter 6 (asset lock)", "Community Interest Company Regulations 2005, regs 26–27"]
+    },
+    {
+      id: "s8", title: "Annual filing cycle",
+      goal: "File everything on time, every year. Late filing is the fastest way to lose a CIC.",
+      why: "Each year a CIC files accounts with a CIC34 report, a confirmation statement and a tax return. The Regulator and Companies House can act if these are missing.",
+      recurring: true,
+      items: [
+        { id: "s8a", kind: "check", good: "yes", q: "Confirmation statement filed (within 14 days of its due date), with directors’ ID verified?", help: "From 18 November 2025, existing directors confirm their ID at the first confirmation statement. The transition ends on 18 November 2026." },
+        { id: "s8b", kind: "doc", good: "yes", q: "Annual accounts approved by the board and signed", help: "" },
+        { id: "s8c", kind: "doc", good: "yes", q: "CIC34 report completed and signed by a director", help: "Short version for most CICs. Use the detailed version if paying dividends or performance-related interest." },
+        { id: "s8d", kind: "check", good: "yes", q: "Accounts and CIC34 filed together with Companies House, fee paid, before the deadline?", help: "First accounts: 21 months after incorporation. After that: 9 months after year end. A dormant CIC still files a CIC34." },
+        { id: "s8e", kind: "check", good: "yes", q: "CT600 tax return filed with HMRC (12 months after year end) and any tax paid (9 months + 1 day)?", help: "" },
+        { id: "s8f", kind: "check", good: "yes", only: "shares", q: "Any dividends paid were within the 35% cap and approved properly?", help: "" },
+        { id: "s8g", kind: "check", good: "yes", q: "Registers and Companies House records updated for any changes (directors, PSCs, address)?", help: "Changes must be filed within 14 days." }
+      ],
+      docs: ["Confirmation statement (CS01)", "Signed annual accounts", "CIC34 report", "CT600 & tax computation", "Updated registers"],
+      sources: ["Companies Act 2006, s441–442 (accounts deadlines), s853A (confirmation statement)", "Community Interest Company Regulations 2005, regs 26–29 (CIC report)", "Form CIC34 (CIC Regulator)", "Finance Act 1998 Sch 18 (CT600)"]
+    },
+    {
+      id: "s9", title: "Fully functional CIC",
+      goal: "Final sign-off: the CIC is set up, running, compliant and ready to grow.",
+      why: "A fully functional CIC is one the Regulator would have no reason to look at: on time, transparent and clearly helping its community.",
+      items: [
+        { id: "s9a", kind: "check", good: "yes", q: "Have Stages 1–8 all been completed?", help: "Check the flowchart above. All should be green." },
+        { id: "s9b", kind: "check", good: "yes", q: "No filings overdue at Companies House or HMRC?", help: "See the Key deadlines table." },
+        { id: "s9c", kind: "check", good: "yes", q: "Has the board reviewed whether the CIC still meets the community interest test?", help: "Do this once a year, before the CIC34." },
+        { id: "s9d", kind: "check", good: "yes", q: "Is there a written plan for next year (budget, funding, activities)?", help: "" },
+        { id: "s9e", kind: "stop", good: "no", q: "Is there any open complaint, investigation or letter from the CIC Regulator?", help: "The Regulator can investigate, remove or appoint directors, freeze assets and even apply to close a CIC (2004 Act, ss41–50). Deal with any letter straight away." }
+      ],
+      docs: ["Board review of community interest test", "Budget & plan for next year", "Compliance sign-off"],
+      sources: ["Companies (Audit, Investigations and Community Enterprise) Act 2004, ss41–50 (Regulator powers)"]
+    }
+  ];
+
+  /* ---------------- Storage (per device only) ---------------- */
+  var KEY = "bedrock-cic-tracker-v1";
+  var state = load();
+
+  function blankClient(name) {
+    return { name: name, type: "", inc: "", ye: "", trade: "", answers: {}, notes: {}, created: new Date().toISOString() };
+  }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var s = JSON.parse(raw);
+        if (s && s.clients && Object.keys(s.clients).length) return s;
+      }
+    } catch (e) {}
+    var id = "c" + Date.now();
+    var s0 = { clients: {}, current: id, stage: "s1", view: "chat" };
+    s0.clients[id] = blankClient("My new CIC");
+    return s0;
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function client() { return state.clients[state.current]; }
+
+  /* ---------------- Logic ---------------- */
+  function itemsFor(stage, c) {
+    return stage.items.filter(function (it) { return !it.only || it.only === c.type; });
+  }
+  function itemState(it, c) {
+    var a = c.answers[it.id];
+    if (!a) return "none";
+    if (a === "unsure") return "unsure";
+    return a === it.good ? "ok" : "bad";
+  }
+  function stageStatus(stage, c) {
+    var its = itemsFor(stage, c), ok = 0, any = false, blocked = false;
+    its.forEach(function (it) {
+      var s = itemState(it, c);
+      if (s !== "none") any = true;
+      if (s === "ok") ok++;
+      if (s === "bad" && it.kind === "stop") blocked = true;
+    });
+    if (blocked) return { key: "blocked", label: "Blocked", ok: ok, total: its.length };
+    if (ok === its.length) return { key: "done", label: "Complete", ok: ok, total: its.length };
+    if (any) return { key: "progress", label: "In progress " + ok + "/" + its.length, ok: ok, total: its.length };
+    return { key: "none", label: "Not started", ok: ok, total: its.length };
+  }
+
+  /* ---------------- Dates ---------------- */
+  function parse(d) { if (!d) return null; var p = d.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function addMonths(d, m) {
+    var r = new Date(d.getFullYear(), d.getMonth() + m, 1);
+    var last = new Date(r.getFullYear(), r.getMonth() + 1, 0).getDate();
+    r.setDate(Math.min(d.getDate(), last));
+    return r;
+  }
+  function addDays(d, n) { var r = new Date(d); r.setDate(r.getDate() + n); return r; }
+  function fmt(d) { return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
+  function today() { var t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
+
+  function deadlines(c) {
+    var out = [], inc = parse(c.inc), ye = parse(c.ye), trade = parse(c.trade), t = today();
+    if (trade) out.push({ what: "Tell HMRC you are liable to Corporation Tax", due: addMonths(trade, 3), who: "HMRC" });
+    if (inc) {
+      // First accounting reference date: last day of the month of the first anniversary,
+      // unless the client has set a different year end.
+      var firstYE;
+      if (ye) {
+        firstYE = new Date(inc.getFullYear(), ye.getMonth(), ye.getDate());
+        while (firstYE <= addMonths(inc, 6)) firstYE = new Date(firstYE.getFullYear() + 1, ye.getMonth(), ye.getDate());
+      } else {
+        firstYE = new Date(inc.getFullYear() + 1, inc.getMonth() + 1, 0);
+      }
+      // Confirmation statements: within 14 days after each anniversary of incorporation.
+      for (var y = 1; y <= 30; y++) {
+        var cs = addDays(addMonths(inc, 12 * y), 14);
+        if (cs >= addDays(t, -60) || y === 1) { out.push({ what: "Confirmation statement (review period " + y + ")", due: cs, who: "Companies House" }); }
+        if (cs > addMonths(t, 12)) break;
+      }
+      // Accounts + CIC34 and tax for each year end.
+      var yeD = firstYE, n = 1;
+      while (n <= 30) {
+        // Companies Act 2006 s442: a first period over 12 months is due at the later of
+        // 21 months from incorporation or 3 months after the period ends.
+        var acc = addMonths(yeD, 9);
+        if (n === 1 && yeD > addMonths(inc, 12)) { var a21 = addMonths(inc, 21), a3 = addMonths(yeD, 3); acc = a21 > a3 ? a21 : a3; }
+        var lastRelevant = addMonths(yeD, 12);
+        if (lastRelevant >= addDays(t, -60) || n === 1) {
+          out.push({ what: "Accounts + CIC34 report (year ending " + fmt(yeD) + ")", due: acc, who: "Companies House / CIC Regulator" });
+          out.push({ what: "Corporation Tax payment (year ending " + fmt(yeD) + ")", due: addDays(addMonths(yeD, 9), 1), who: "HMRC" });
+          out.push({ what: "CT600 tax return (year ending " + fmt(yeD) + ")", due: addMonths(yeD, 12), who: "HMRC" });
+        }
+        if (yeD > t) break;
+        yeD = addMonths(yeD, 12);
+        n++;
+      }
+      out.push({ what: "Existing directors’ ID verification transition ends", due: new Date(2026, 10, 18), who: "Companies House" });
+    }
+    out.sort(function (a, b) { return a.due - b.due; });
+    out.forEach(function (d) {
+      var days = Math.round((d.due - t) / 86400000);
+      d.days = days;
+      d.key = d.what;
+      d.filed = !!(c.filed && c.filed[d.key]);
+      d.flag = d.filed ? "done" : days < 0 ? "bad" : days <= 30 ? "warn" : "ok";
+    });
+    return out;
+  }
+
+  /* ---------------- Rendering ---------------- */
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (m) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]; }); }
+
+  function renderClients() {
+    var sel = $("client-select");
+    sel.innerHTML = Object.keys(state.clients).map(function (id) {
+      return '<option value="' + id + '"' + (id === state.current ? " selected" : "") + ">" + esc(state.clients[id].name) + "</option>";
+    }).join("");
+    var c = client();
+    $("f-type").value = c.type || "";
+    $("f-inc").value = c.inc || "";
+    $("f-ye").value = c.ye || "";
+    $("f-trade").value = c.trade || "";
+  }
+
+  function renderHealth() {
+    var c = client(), total = 0, ok = 0, blocked = false, unsure = false, done = 0;
+    STAGES.forEach(function (s) {
+      var st = stageStatus(s, c);
+      total += st.total; ok += st.ok;
+      if (st.key === "blocked") blocked = true;
+      if (st.key === "done") done++;
+      itemsFor(s, c).forEach(function (it) { var x = itemState(it, c); if (x === "unsure" || (x === "bad" && it.kind !== "stop")) unsure = true; });
+    });
+    var dl = deadlines(c);
+    var overdue = dl.some(function (d) { return d.flag === "bad"; });
+    var soon = dl.some(function (d) { return d.flag === "warn"; });
+    var pill = $("health-pill"), cls, txt;
+    if (done === STAGES.length && !overdue) { cls = "done"; txt = "Fully functional CIC"; }
+    else if (blocked || overdue) { cls = "bad"; txt = "Off track"; }
+    else if (unsure || soon) { cls = "warn"; txt = "Needs attention"; }
+    else if (ok === 0) { cls = "none"; txt = "Not started"; }
+    else { cls = "ok"; txt = "On track"; }
+    pill.className = "pill " + cls; pill.textContent = txt;
+    var pct = total ? Math.round(ok / total * 100) : 0;
+    $("progress-bar").style.width = pct + "%";
+    var reasons = [];
+    if (blocked) reasons.push("a stage is blocked");
+    if (overdue) reasons.push("a deadline has passed");
+    if (soon && !overdue) reasons.push("a deadline is due within 30 days");
+    $("progress-text").textContent = pct + "% complete · " + done + " of " + STAGES.length + " stages done" + (reasons.length ? " · " + reasons.join(", ") : "");
+  }
+
+  function renderFlow() {
+    var c = client();
+    $("flow").innerHTML = STAGES.map(function (s, i) {
+      var st = stageStatus(s, c);
+      return '<li><button class="node s-' + st.key + (s.id === state.stage ? " active" : "") + '" data-stage="' + s.id + '" aria-current="' + (s.id === state.stage ? "step" : "false") + '">' +
+        '<span class="num">STAGE ' + (i + 1) + "</span>" +
+        '<span class="ttl">' + esc(s.title) + "</span>" +
+        '<span class="st">' + esc(st.label) + "</span></button></li>";
+    }).join("");
+  }
+
+  function kindTag(it) {
+    if (it.kind === "doc") return '<span class="tag-doc">DOCUMENT</span>';
+    if (it.kind === "stop") return '<span class="tag-doc tag-stop">STOP CHECK</span>';
+    return "";
+  }
+
+  function renderStage() {
+    var c = client(), idx = 0;
+    STAGES.forEach(function (s, i) { if (s.id === state.stage) idx = i; });
+    var s = STAGES[idx], st = stageStatus(s, c), its = itemsFor(s, c);
+    var prev = idx > 0 ? stageStatus(STAGES[idx - 1], c) : null;
+    var html = '<div class="card">';
+    html += '<span class="eyebrow">Stage ' + (idx + 1) + " of " + STAGES.length + "</span>";
+    html += "<h2>" + esc(s.title) + "</h2>";
+    html += "<p><strong>Goal:</strong> " + esc(s.goal) + "</p>";
+    if (prev && prev.key !== "done") html += '<div class="warnbox">Stage ' + idx + " is not finished yet. You can look ahead, but finish it first.</div>";
+    if (st.key === "blocked") html += '<div class="badbox"><strong>Blocked.</strong> One of the stop checks failed. Fix it before this stage can pass.</div>';
+    if (st.key === "done") html += '<div class="okbox"><strong>Stage complete.</strong> ' + (idx < STAGES.length - 1 ? 'Move on to Stage ' + (idx + 2) + '.' : 'This CIC is fully functional.') + "</div>";
+    html += '<div class="tabs" role="tablist">' +
+      '<button class="tab" role="tab" data-view="chat" aria-selected="' + (state.view === "chat") + '">Guided chat</button>' +
+      '<button class="tab" role="tab" data-view="list" aria-selected="' + (state.view === "list") + '">Checklist</button></div>';
+    html += state.view === "chat" ? chatHTML(s, its, c, idx) : listHTML(its, c);
+    if (s.recurring) html += '<button class="btn small alt" id="new-year">Start next year’s cycle (clears this stage)</button>';
+    html += "</div>";
+
+    // Side panel
+    html += '<div class="card soft side">';
+    html += "<div><h3>Why this stage matters</h3><p>" + esc(s.why) + "</p></div>";
+    html += "<div><h3>Documents to collect</h3><ul>" + s.docs.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul></div>";
+    html += '<div><h3>Rules this is based on</h3><ul class="src">' + s.sources.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul></div>";
+    html += '<div><h3>Notes for this stage</h3><textarea id="stage-notes" placeholder="Where documents are saved, who is doing what, dates…">' + esc(c.notes[s.id] || "") + "</textarea></div>";
+    html += '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+      (idx > 0 ? '<button class="btn small alt" data-go="' + STAGES[idx - 1].id + '">← Previous stage</button>' : "") +
+      (idx < STAGES.length - 1 ? '<button class="btn small" data-go="' + STAGES[idx + 1].id + '">Next stage →</button>' : "") + "</div>";
+    html += "</div>";
+    $("stage").innerHTML = html;
+    var box = document.querySelector(".chat");
+    if (box) box.scrollTop = box.scrollHeight;
+  }
+
+  function chatHTML(s, its, c, idx) {
+    var h = '<div class="chat">';
+    h += '<div class="msg reg"><span class="who">CIC Regulator guide</span>Let’s work through <strong>' + esc(s.title.toLowerCase()) + "</strong>. I’ll ask " + its.length + " questions. Answer honestly — a “No” now saves a rejection later.</div>";
+    var next = null;
+    its.forEach(function (it) {
+      var x = itemState(it, c);
+      if (x === "none" || x === "unsure") { if (!next) next = it; if (x === "none") return; }
+      if (next && next !== it) return;
+      h += '<div class="msg reg"><span class="who">Question</span>' + kindTag(it) + esc(it.q) + "</div>";
+      var a = c.answers[it.id];
+      h += '<div class="msg me"><span class="who">Answer</span>' + (a === "yes" ? "Yes" : a === "no" ? "No" : "Not sure") + "</div>";
+      if (x === "ok") h += '<div class="msg fb-ok">Good. That’s in place.</div>';
+      else if (x === "unsure") h += '<div class="msg fb-warn">Here is what you need to know: ' + esc(it.help || "Ask your adviser before you move on.") + "</div>";
+      else if (it.kind === "stop") h += '<div class="msg fb-bad"><strong>Stop.</strong> ' + esc(it.help) + "</div>";
+      else h += '<div class="msg fb-bad">This is needed before the stage can pass. ' + esc(it.help || "Get this done, then come back and change your answer.") + "</div>";
+    });
+    if (next) {
+      if (itemState(next, c) !== "unsure") {
+        h += '<div class="msg reg"><span class="who">Question</span>' + kindTag(next) + esc(next.q) + (next.help ? '<br><span class="src">' + esc(next.help) + "</span>" : "") + "</div>";
+      } else {
+        h += '<div class="msg reg"><span class="who">Question</span>Once you know, answer again: ' + esc(next.q) + "</div>";
+      }
+      h += "</div>";
+      h += '<div class="answers">' +
+        '<button class="btn" data-ans="yes" data-item="' + next.id + '">Yes</button>' +
+        '<button class="btn" data-ans="no" data-item="' + next.id + '">No</button>' +
+        '<button class="btn alt" data-ans="unsure" data-item="' + next.id + '">Not sure</button></div>';
+      return h;
+    }
+    var st = stageStatus(s, c);
+    if (st.key === "done") {
+      h += '<div class="msg reg"><span class="who">CIC Regulator guide</span>All questions for this stage are answered and everything is in place. ' + (idx < STAGES.length - 1 ? "Well done — let’s move on." : "This CIC is fully functional. Keep the annual cycle going.") + "</div></div>";
+      if (idx < STAGES.length - 1) h += '<div class="answers"><button class="btn" data-go="' + STAGES[idx + 1].id + '">Go to Stage ' + (idx + 2) + " →</button></div>";
+    } else {
+      h += '<div class="msg reg"><span class="who">CIC Regulator guide</span>All questions are answered, but some items are not in place yet. Fix them, then change the answers in the <strong>Checklist</strong> tab.</div></div>';
+    }
+    return h;
+  }
+
+  function listHTML(its, c) {
+    return '<ul class="items">' + its.map(function (it) {
+      var x = itemState(it, c), a = c.answers[it.id] || "";
+      return '<li class="item i-' + x + '"><span class="q">' + kindTag(it) + esc(it.q) + "</span>" +
+        '<select data-item="' + it.id + '" aria-label="Answer">' +
+        '<option value=""' + (a === "" ? " selected" : "") + ">—</option>" +
+        '<option value="yes"' + (a === "yes" ? " selected" : "") + ">Yes</option>" +
+        '<option value="no"' + (a === "no" ? " selected" : "") + ">No</option>" +
+        '<option value="unsure"' + (a === "unsure" ? " selected" : "") + ">Not sure</option></select>" +
+        (it.help ? '<span class="h">' + esc(it.help) + "</span>" : "") + "</li>";
+    }).join("") + "</ul>";
+  }
+
+  function renderDeadlines() {
+    var c = client(), dl = deadlines(c), t = $("deadlines");
+    if (!dl.length) { t.innerHTML = '<tr><td>Enter the date of incorporation, year end and trading start date above to see deadlines.</td></tr>'; return; }
+    t.innerHTML = "<thead><tr><th>Done</th><th>What</th><th>Who to</th><th>Due</th><th>Status</th></tr></thead><tbody>" + dl.map(function (d) {
+      var label = d.filed ? "Done" : d.days < 0 ? "Overdue by " + (-d.days) + " days" : d.days === 0 ? "Due today" : "In " + d.days + " days";
+      return '<tr><td><input type="checkbox" data-filed="' + esc(d.key) + '"' + (d.filed ? " checked" : "") + ' aria-label="Mark as done"></td><td>' + esc(d.what) + "</td><td>" + esc(d.who) + "</td><td>" + fmt(d.due) + '</td><td><span class="pill ' + d.flag + '">' + label + "</span></td></tr>";
+    }).join("") + "</tbody>";
+  }
+
+  function renderDocs() {
+    var c = client();
+    $("docs-grid").innerHTML = STAGES.map(function (s, i) {
+      var st = stageStatus(s, c);
+      return '<div class="card"><span class="eyebrow">Stage ' + (i + 1) + '</span><h3>' + esc(s.title) + '</h3><ul>' +
+        s.docs.map(function (d) { return "<li" + (st.key === "done" ? ' class="doc-ok"' : "") + ">" + esc(d) + "</li>"; }).join("") + "</ul></div>";
+    }).join("");
+  }
+
+  function renderAll() { renderClients(); renderHealth(); renderFlow(); renderStage(); renderDeadlines(); renderDocs(); }
+
+  /* ---------------- Events ---------------- */
+  function setAnswer(id, val) {
+    var c = client();
+    if (val) c.answers[id] = val; else delete c.answers[id];
+    save(); renderHealth(); renderFlow(); renderStage(); renderDocs();
+  }
+
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.stage) { state.stage = b.dataset.stage; save(); renderFlow(); renderStage(); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (b.dataset.go) { state.stage = b.dataset.go; save(); renderFlow(); renderStage(); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (b.dataset.view) { state.view = b.dataset.view; save(); renderStage(); return; }
+    if (b.dataset.ans) { setAnswer(b.dataset.item, b.dataset.ans); return; }
+    if (b.id === "new-year") {
+      if (!confirm("Clear this year’s answers for the annual filing cycle?")) return;
+      var st = STAGES.filter(function (s) { return s.id === state.stage; })[0];
+      st.items.forEach(function (it) { delete client().answers[it.id]; });
+      ["s9a", "s9b", "s9c", "s9d"].forEach(function (k) { delete client().answers[k]; });
+      save(); renderAll(); return;
+    }
+  });
+  document.addEventListener("change", function (e) {
+    if (e.target.matches("select[data-item]")) setAnswer(e.target.dataset.item, e.target.value);
+    if (e.target.matches("input[data-filed]")) {
+      var c = client(); c.filed = c.filed || {};
+      if (e.target.checked) c.filed[e.target.dataset.filed] = true; else delete c.filed[e.target.dataset.filed];
+      save(); renderHealth(); renderDeadlines();
+    }
+  });
+  document.addEventListener("input", function (e) {
+    if (e.target.id === "stage-notes") { client().notes[state.stage] = e.target.value; save(); }
+  });
+
+  $("client-select").addEventListener("change", function () { state.current = this.value; save(); renderAll(); });
+  $("client-new").addEventListener("click", function () {
+    var n = prompt("Name of the client or CIC:"); if (!n) return;
+    var id = "c" + Date.now(); state.clients[id] = blankClient(n.trim()); state.current = id; state.stage = "s1"; save(); renderAll();
+  });
+  $("client-rename").addEventListener("click", function () {
+    var n = prompt("New name:", client().name); if (!n) return; client().name = n.trim(); save(); renderClients();
+  });
+  $("client-delete").addEventListener("click", function () {
+    if (!confirm("Delete “" + client().name + "” and all its answers from this device?")) return;
+    delete state.clients[state.current];
+    var ids = Object.keys(state.clients);
+    if (!ids.length) { var id = "c" + Date.now(); state.clients[id] = blankClient("My new CIC"); ids = [id]; }
+    state.current = ids[0]; save(); renderAll();
+  });
+  [["f-type", "type"], ["f-inc", "inc"], ["f-ye", "ye"], ["f-trade", "trade"]].forEach(function (p) {
+    $(p[0]).addEventListener("change", function () { client()[p[1]] = this.value; save(); renderAll(); });
+  });
+
+  $("export").addEventListener("click", function () {
+    var blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "cic-tracker-backup-" + new Date().toISOString().slice(0, 10) + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $("import").addEventListener("change", function () {
+    var f = this.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      try {
+        var s = JSON.parse(r.result);
+        if (!s.clients || !Object.keys(s.clients).length) throw new Error("bad");
+        Object.keys(s.clients).forEach(function (id) { state.clients[id] = s.clients[id]; });
+        state.current = s.current && state.clients[s.current] ? s.current : Object.keys(s.clients)[0];
+        save(); renderAll(); alert("Backup loaded.");
+      } catch (err) { alert("That file is not a valid tracker backup."); }
+    };
+    r.readAsText(f); this.value = "";
+  });
+  $("print").addEventListener("click", function () { state.view = "list"; renderStage(); window.print(); });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
