@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CIC Set-up Tracker | Bedrock Accounting Services</title>
-<meta name="description" content="A step-by-step guide to setting up and running a community interest company (CIC), based on CIC Regulator and Companies House rules. Track each stage and the documents you need.">
-<meta name="robots" content="noindex">
+<title>CIC Client Tracker (In-house)</title>
+<meta name="description" content="Bedrock in-house tool. Not for clients.">
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
@@ -166,16 +166,23 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html">Bedrock Accounting Services</a>
-    <a href="index.html#enquiry">Ask us for help</a>
+    <span class="pill warn">In-house only · not for clients</span>
   </div>
 </header>
 
 <main class="wrap">
   <section class="intro">
-    <span class="eyebrow">CIC set-up tracker</span>
-    <h1>From idea to a fully working CIC, one stage at a time</h1>
-    <p>Work through nine stages. Each stage asks you simple questions and lists the documents you need. A stage turns green when everything is in place. The steps follow the rules of the CIC Regulator and Companies House.</p>
-    <p><strong>Your answers stay on this device.</strong> Nothing is sent to us. Use “Save backup” to keep a copy.</p>
+    <span class="eyebrow">In-house · CIC client tracker</span>
+    <h1>CIC clients: where each one is and what to do next</h1>
+    <p>Use this on a call or in a meeting. Pick the client, run the guided chat for their stage, and copy the next actions into your follow-up email. The steps follow CIC Regulator, Companies House and HMRC rules.</p>
+    <p><strong>Client data is saved only in this browser.</strong> Click “Save backup” after each session and keep the file in the client folder.</p>
+  </section>
+
+  <!-- All clients overview -->
+  <section class="card" style="margin-bottom:18px" aria-label="All clients">
+    <h2>All clients at a glance</h2>
+    <p class="src">Worst first. Click a name to open that client.</p>
+    <div class="table-scroll"><table id="overview"></table></div>
   </section>
 
   <!-- Client bar -->
@@ -218,6 +225,15 @@
     </div>
   </section>
 
+  <!-- Next actions -->
+  <section class="card" style="margin:18px 0 0" aria-label="Next actions">
+    <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+      <h2>Next actions for this client</h2>
+      <button class="btn small" id="copy-actions">Copy for client email</button>
+    </div>
+    <ol id="actions" style="margin:0;padding-left:20px;display:grid;gap:4px"></ol>
+  </section>
+
   <!-- Flowchart -->
   <section class="flow-wrap" aria-label="Stages">
     <h2>Where the client is now</h2>
@@ -249,7 +265,7 @@
 
 <footer>
   <div class="wrap">
-    <p>This tracker is a guide, not legal advice. Rules and fees change. Check GOV.UK before you file. Companies House fees went up on 1 February 2026, so older guides may show the wrong amounts.</p>
+    <p>In-house tool for Bedrock staff. Do not share the link with clients. This is a guide, not legal advice. Rules and fees change. Check GOV.UK before you file. Companies House fees went up on 1 February 2026, so older guides may show the wrong amounts.</p>
     <p>© 2026 Bedrock Accounting Services Ltd · Company No. 15569708 · Windsor, Berkshire · <a href="privacy.html">Privacy notice</a></p>
   </div>
 </footer>
@@ -685,17 +701,84 @@
     }).join("");
   }
 
-  function renderAll() { renderClients(); renderHealth(); renderFlow(); renderStage(); renderDeadlines(); renderDocs(); }
+  function summary(c) {
+    var blocked = false, unsure = false, done = 0, ok = 0, total = 0, current = null;
+    STAGES.forEach(function (s, i) {
+      var st = stageStatus(s, c);
+      total += st.total; ok += st.ok;
+      if (st.key === "blocked") blocked = true;
+      if (st.key === "done") done++; else if (current === null) current = i;
+      itemsFor(s, c).forEach(function (it) { var x = itemState(it, c); if (x === "unsure" || (x === "bad" && it.kind !== "stop")) unsure = true; });
+    });
+    var dl = deadlines(c);
+    var overdue = dl.filter(function (d) { return d.flag === "bad"; });
+    var soon = dl.filter(function (d) { return d.flag === "warn"; });
+    var next = dl.filter(function (d) { return !d.filed && d.days >= 0; })[0] || null;
+    var cls, txt, rank;
+    if (done === STAGES.length && !overdue.length) { cls = "done"; txt = "Fully functional CIC"; rank = 4; }
+    else if (blocked || overdue.length) { cls = "bad"; txt = "Off track"; rank = 0; }
+    else if (unsure || soon.length) { cls = "warn"; txt = "Needs attention"; rank = 1; }
+    else if (ok === 0) { cls = "none"; txt = "Not started"; rank = 3; }
+    else { cls = "ok"; txt = "On track"; rank = 2; }
+    return { cls: cls, txt: txt, rank: rank, blocked: blocked, overdue: overdue, soon: soon, next: next, done: done, ok: ok, total: total, current: current === null ? STAGES.length - 1 : current };
+  }
+
+  function nextActions(c) {
+    var out = [], sm = summary(c);
+    sm.overdue.forEach(function (d) { out.push({ urgent: true, text: "OVERDUE: " + d.what + " (was due " + fmt(d.due) + "). File now, or tick it as done if it was filed." }); });
+    STAGES.forEach(function (s, i) {
+      itemsFor(s, c).forEach(function (it) {
+        if (itemState(it, c) === "bad" && it.kind === "stop") out.push({ urgent: true, text: "Stage " + (i + 1) + " blocked: " + it.q + " " + it.help });
+      });
+    });
+    var s = STAGES[sm.current];
+    if (stageStatus(s, c).key !== "done") {
+      itemsFor(s, c).forEach(function (it) {
+        var x = itemState(it, c);
+        if (x === "ok" || (x === "bad" && it.kind === "stop")) return;
+        var verb = it.kind === "doc" ? "Get this document: " : x === "none" ? "Ask: " : "Sort out: ";
+        out.push({ urgent: false, text: "Stage " + (sm.current + 1) + " — " + verb + it.q + (x !== "none" && it.help ? " (" + it.help + ")" : "") });
+      });
+    }
+    sm.soon.forEach(function (d) { out.push({ urgent: true, text: "Due soon: " + d.what + " by " + fmt(d.due) + "." }); });
+    if (!c.inc && sm.current >= 4) out.push({ urgent: false, text: "Enter the date of incorporation so deadlines can be worked out." });
+    return out;
+  }
+
+  function renderActions() {
+    var a = nextActions(client());
+    $("actions").innerHTML = a.length ? a.map(function (x) {
+      return "<li" + (x.urgent ? ' style="color:var(--bad);font-weight:600"' : "") + ">" + esc(x.text) + "</li>";
+    }).join("") : "<li>Nothing outstanding. Check again before the next deadline.</li>";
+  }
+
+  function renderOverview() {
+    var rows = Object.keys(state.clients).map(function (id) {
+      var c = state.clients[id]; return { id: id, c: c, s: summary(c) };
+    });
+    rows.sort(function (a, b) { return a.s.rank - b.s.rank || a.c.name.localeCompare(b.c.name); });
+    $("overview").innerHTML = "<thead><tr><th>Client</th><th>Status</th><th>Current stage</th><th>Progress</th><th>Next deadline</th></tr></thead><tbody>" +
+      rows.map(function (r) {
+        var nd = r.s.next ? esc(r.s.next.what) + " — " + fmt(r.s.next.due) : (r.c.inc ? "None upcoming" : "Add incorporation date");
+        return '<tr><td><button class="btn small alt" data-client="' + r.id + '"' + (r.id === state.current ? ' aria-current="true" style="background:var(--accent-soft)"' : "") + ">" + esc(r.c.name) + "</button></td>" +
+          '<td><span class="pill ' + r.s.cls + '">' + r.s.txt + (r.s.overdue.length ? " · " + r.s.overdue.length + " overdue" : "") + "</span></td>" +
+          "<td>" + (r.s.current + 1) + ". " + esc(STAGES[r.s.current].title) + "</td>" +
+          "<td>" + Math.round(r.s.ok / r.s.total * 100) + "%</td><td>" + nd + "</td></tr>";
+      }).join("") + "</tbody>";
+  }
+
+  function renderAll() { renderClients(); renderOverview(); renderHealth(); renderActions(); renderFlow(); renderStage(); renderDeadlines(); renderDocs(); }
 
   /* ---------------- Events ---------------- */
   function setAnswer(id, val) {
     var c = client();
     if (val) c.answers[id] = val; else delete c.answers[id];
-    save(); renderHealth(); renderFlow(); renderStage(); renderDocs();
+    save(); renderOverview(); renderHealth(); renderActions(); renderFlow(); renderStage(); renderDocs();
   }
 
   document.addEventListener("click", function (e) {
     var b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.client) { state.current = b.dataset.client; state.stage = STAGES[summary(client()).current].id; save(); renderAll(); return; }
     if (b.dataset.stage) { state.stage = b.dataset.stage; save(); renderFlow(); renderStage(); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     if (b.dataset.go) { state.stage = b.dataset.go; save(); renderFlow(); renderStage(); $("stage").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     if (b.dataset.view) { state.view = b.dataset.view; save(); renderStage(); return; }
@@ -713,7 +796,7 @@
     if (e.target.matches("input[data-filed]")) {
       var c = client(); c.filed = c.filed || {};
       if (e.target.checked) c.filed[e.target.dataset.filed] = true; else delete c.filed[e.target.dataset.filed];
-      save(); renderHealth(); renderDeadlines();
+      save(); renderOverview(); renderHealth(); renderActions(); renderDeadlines();
     }
   });
   document.addEventListener("input", function (e) {
@@ -726,7 +809,7 @@
     var id = "c" + Date.now(); state.clients[id] = blankClient(n.trim()); state.current = id; state.stage = "s1"; save(); renderAll();
   });
   $("client-rename").addEventListener("click", function () {
-    var n = prompt("New name:", client().name); if (!n) return; client().name = n.trim(); save(); renderClients();
+    var n = prompt("New name:", client().name); if (!n) return; client().name = n.trim(); save(); renderAll();
   });
   $("client-delete").addEventListener("click", function () {
     if (!confirm("Delete “" + client().name + "” and all its answers from this device?")) return;
@@ -759,6 +842,13 @@
       } catch (err) { alert("That file is not a valid tracker backup."); }
     };
     r.readAsText(f); this.value = "";
+  });
+  $("copy-actions").addEventListener("click", function () {
+    var c = client(), a = nextActions(c);
+    var txt = "Next steps for " + c.name + ":\n" + (a.length ? a.map(function (x, i) { return (i + 1) + ". " + x.text.replace(/^Stage \d+ — Ask: /, "Please confirm: "); }).join("\n") : "Nothing outstanding right now.");
+    var done = function () { var b = $("copy-actions"); b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy for client email"; }, 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function () { prompt("Copy this:", txt); });
+    else prompt("Copy this:", txt);
   });
   $("print").addEventListener("click", function () { state.view = "list"; renderStage(); window.print(); });
 
