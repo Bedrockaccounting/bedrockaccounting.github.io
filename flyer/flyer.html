@@ -23,31 +23,38 @@
   .brand { font-family: var(--serif); font-weight: 600; font-size: 22pt; line-height: 1; }
   .brand small { display: block; font-family: var(--sans); font-weight: 600; font-size: 8.5pt; letter-spacing: .14em; color: var(--ink-soft); margin-top: 1.5mm; }
 
-  .hero { padding: 10mm 18mm 8mm; }
+  .hero { padding: 8mm 18mm 6mm; }
   .eyebrow { font-size: 9.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-  h1 { font-family: var(--serif); font-weight: 600; font-size: 33pt; line-height: 1.08; margin: 3.5mm 0 4mm; letter-spacing: -.01em; }
-  .lead { font-size: 12pt; line-height: 1.5; color: var(--ink-soft); margin: 0; max-width: 150mm; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 30pt; line-height: 1.08; margin: 3mm 0 3.5mm; letter-spacing: -.01em; }
+  .lead { font-size: 11pt; line-height: 1.5; color: var(--ink-soft); margin: 0; max-width: 150mm; }
 
   .services { margin: 0 18mm; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; }
-  .svc { padding: 3mm 0; border-bottom: 1px solid var(--line); }
+  .svc { padding: 2.4mm 0; border-bottom: 1px solid var(--line); }
   .svc b { display: block; font-size: 11pt; font-weight: 700; }
   .svc span { font-size: 9pt; color: var(--ink-soft); line-height: 1.4; }
 
-  .unsure { margin: 5mm 18mm 0; font-size: 10.5pt; color: var(--ink-soft); }
+  .unsure { margin: 4mm 18mm 0; font-size: 10.5pt; color: var(--ink-soft); }
   .unsure b { color: var(--ink); }
-  .promise { margin: 6mm 18mm 6mm; display: flex; gap: 8mm; font-size: 10.5pt; font-weight: 600; }
+  .offer { margin: 4mm 18mm 0; background: var(--bg-soft); border-left: 1.5mm solid var(--accent); border-radius: 0 2mm 2mm 0; padding: 3.5mm 5mm 3mm; }
+  .offer-head { font-size: 8.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 2mm; }
+  .offer-grid b { display: block; font-family: var(--serif); font-weight: 600; font-size: 20pt; line-height: 1.05; color: var(--navy); }
+  .offer-grid span { display: block; font-size: 10.5pt; font-weight: 600; margin-top: 1mm; }
+  .offer-small { font-size: 7.5pt; color: var(--ink-soft); margin-top: 2.5mm; }
+  .promise { margin: 4mm 18mm 4mm; display: flex; gap: 8mm; font-size: 10.5pt; font-weight: 600; }
   .promise div { display: flex; align-items: center; gap: 2.5mm; }
   .tick { width: 5mm; height: 5mm; border-radius: 50%; background: var(--accent); flex: none; position: relative; }
   .tick::after { content: ""; position: absolute; left: 1.7mm; top: 0.9mm; width: 1.2mm; height: 2.4mm; border: solid #fff; border-width: 0 .45mm .45mm 0; transform: rotate(45deg); }
 
-  .cta { margin-top: auto; background: var(--navy); color: #fff; padding: 9mm 18mm; display: grid; grid-template-columns: 1fr auto; gap: 10mm; align-items: center; }
+  .cta { margin-top: auto; background: var(--navy); color: #fff; padding: 7mm 18mm; display: grid; grid-template-columns: 1fr auto; gap: 10mm; align-items: center; }
   .cta h2 { font-family: var(--serif); font-weight: 600; font-size: 22pt; line-height: 1.15; margin: 0 0 4mm; }
   .cta p { margin: 0 0 2mm; font-size: 11pt; color: #cfdaf7; }
   .cta a { display: block; text-decoration: none; }
-  .cta .url { font-size: 13pt; font-weight: 700; color: #fff; margin-top: 5mm; }
+  .cta .url { font-size: 13pt; font-weight: 700; color: #fff; }
+  .cta .who { font-family: var(--serif); font-size: 15pt; font-weight: 600; margin-top: 3.5mm; }
   .cta .phone { font-size: 13pt; font-weight: 700; color: #fff; }
   .cta .email { font-size: 13pt; font-weight: 700; color: #fff; }
-  .cta a.btn { display: inline-block; margin-top: 6mm; background: #fff; color: var(--navy); font-size: 12pt; font-weight: 700; padding: 3mm 6mm; border-radius: 1.5mm; }
+  .cta a.btn { display: inline-block; margin-top: 4mm; background: #fff; color: var(--navy); font-size: 12pt; font-weight: 700; padding: 3mm 6mm; border-radius: 1.5mm; }
   .qr { background: #fff; padding: 5.5mm; border-radius: 3mm; text-align: center; }
   .qr .code { width: 44mm; height: 44mm; }
   .qr .lbl { font-size: 8.5pt; font-weight: 700; color: var(--ink); margin-top: 2.5mm; letter-spacing: .04em; }
@@ -83,6 +90,15 @@
 
   <p class="unsure"><b>Not sure what you need?</b> Tell us about your organisation and we’ll point you in the right direction.</p>
 
+  <div class="offer">
+    <div class="offer-head">New client offers</div>
+    <div class="offer-grid">
+      <div><b>FREE</b><span>First-year confirmation statement</span></div>
+      <div><b>30% OFF</b><span>Filing for start-ups</span></div>
+    </div>
+    <div class="offer-small">Companies House fees not included. Start-up means a company in its first year of trading.</div>
+  </div>
+
   <div class="promise">
     <div><span class="tick"></span>Fixed fee, agreed upfront</div>
     <div><span class="tick"></span>Plain English</div>
@@ -93,9 +109,10 @@
     <div>
       <h2>Let’s get your accounts sorted.</h2>
       <p>Send us an enquiry using the button or the QR code.<br>We reply within two working days.</p>
-      <a class="url" href="https://bedrockaccountingservices.co.uk">bedrockaccountingservices.co.uk</a>
+      <div class="who">Francisca Abagi</div>
       <a class="phone" href="https://wa.me/447426145239">Call or WhatsApp: 07426 145239</a>
       <a class="email" href="mailto:francisca@bedrockaccountingservices.co.uk">francisca@bedrockaccountingservices.co.uk</a>
+      <a class="url" href="https://bedrockaccountingservices.co.uk">bedrockaccountingservices.co.uk</a>
       <a class="btn" href="https://bedrockaccountingservices.co.uk/#enquiry">Send an enquiry &rarr;</a>
     </div>
     <div class="qr">
@@ -104,7 +121,7 @@
       <div class="lbl">SCAN TO ENQUIRE</div>
     </div>
   </div>
-  <div class="foot">Bedrock Accounting Services Ltd · Registered in England and Wales, Company No. 15569708 · Windsor, Berkshire</div>
+  <div class="foot">Bedrock Accounting Services Ltd · Registered in England and Wales, Company No. 15569708</div>
 </div>
 </body>
 </html>
